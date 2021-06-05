@@ -1,5 +1,6 @@
-import { Box, Button, Grid, TextField, Typography } from '@material-ui/core'
 import * as React from 'react'
+import { useIntl } from 'react-intl'
+import { Box, Button, Grid, TextField, Typography } from '@material-ui/core'
 import Copyright from './Copyright'
 
 export interface RegistrationProps {
@@ -7,10 +8,11 @@ export interface RegistrationProps {
 }
 
 const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
+  const intl = useIntl()
   return (
     <>
       <Typography component='h1' variant='h5'>
-        Sign up
+        {intl.formatMessage({ id: 'sign-up' })}
       </Typography>
       <form className='form' noValidate>
         <TextField
@@ -19,7 +21,7 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
           required
           fullWidth
           id='email'
-          label='Email Address'
+          label='Email'
           name='email'
           autoComplete='email'
           autoFocus
@@ -30,7 +32,7 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
           required
           fullWidth
           name='password'
-          label='Password'
+          label={intl.formatMessage({ id: 'password' })}
           type='password'
           id='password'
           autoComplete='current-password'
@@ -41,7 +43,7 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
           required
           fullWidth
           name='password-confirmation'
-          label='Confirm password'
+          label={intl.formatMessage({ id: 'confirm-password' })}
           type='password'
           id='password-confirmation'
           autoComplete='current-password'
@@ -53,11 +55,11 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
           color='primary'
           className='submitButton'
         >
-          Sign Up
+          {intl.formatMessage({ id: 'sign-up' })}
         </Button>
         <Grid container>
           <Grid item onClick={changeView} className='textButton'>
-            {'Already have an account? Sign In'}
+            {intl.formatMessage({ id: 'have-account-sign-in' })}
           </Grid>
         </Grid>
         <Box mt={5}>

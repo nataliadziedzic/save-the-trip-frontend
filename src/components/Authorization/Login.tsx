@@ -1,5 +1,6 @@
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core'
 import * as React from 'react'
+import { useIntl } from 'react-intl'
 import Copyright from './Copyright'
 
 export interface LoginProps {
@@ -7,10 +8,12 @@ export interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ changeView }) => {
+  const intl = useIntl()
+
   return (
     <>
       <Typography component='h1' variant='h5'>
-        Sign in
+        {intl.formatMessage({ id: 'sign-in' })}
       </Typography>
       <form className='form' noValidate>
         <TextField
@@ -19,7 +22,7 @@ const Login: React.FC<LoginProps> = ({ changeView }) => {
           required
           fullWidth
           id='email'
-          label='Email Address'
+          label='Email'
           name='email'
           autoComplete='email'
           autoFocus
@@ -30,7 +33,7 @@ const Login: React.FC<LoginProps> = ({ changeView }) => {
           required
           fullWidth
           name='password'
-          label='Password'
+          label={intl.formatMessage({ id: 'password' })}
           type='password'
           id='password'
           autoComplete='current-password'
@@ -42,14 +45,14 @@ const Login: React.FC<LoginProps> = ({ changeView }) => {
           color='primary'
           className='submitButton'
         >
-          Sign In
+          {intl.formatMessage({ id: 'sign-in' })}
         </Button>
         <Grid container>
           <Grid item xs>
-            <span className='textButton'>Forgot password?</span>
+            <span className='textButton'>{intl.formatMessage({ id: 'forgot-password' })}</span>
           </Grid>
           <Grid item onClick={changeView} className='textButton'>
-            {"Don't have an account? Sign Up"}
+            {intl.formatMessage({ id: 'no-account-sign-up' })}
           </Grid>
         </Grid>
         <Box mt={5}>
