@@ -4,6 +4,14 @@
   "forgot-password": "Nie pamiętasz hasła?",
   "password": "Hasło",
   "confirm-password": "Potwierdź hasło",
+  "username": "Nazwa użytkownika",
   "no-account-sign-up": "Nie masz konta? Zarejestruj się.",
-  "have-account-sign-in": "Masz już konto? Zaloguj się."
+  "have-account-sign-in": "Masz już konto? Zaloguj się.",
+  "create-account-success": "Konto zostało utworzone.",
+  "email-requirements-error": "Adres email jest niepoprawny.",
+  "password-requirements-error": "Hasło nie spełnia podanych wymagań.",
+  "password-match-error": "Hasła różnią się od siebie.",
+  "empty-fields": "Pola nie mogą być puste.",
+  "changes-saved": "Zmiany zostały zapisane.",
+  "something-wrong": "Coś poszło nie tak. Spróbuj ponownie później."
 }

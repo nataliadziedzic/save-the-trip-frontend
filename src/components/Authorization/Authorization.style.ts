@@ -23,10 +23,13 @@ export const Wrapper = styled.div`
     background-position: center;
   }
   .authorizationContainer {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   .logo {
     width: 100px;
@@ -84,4 +87,10 @@ export const LogoSection = styled.section`
       #4335ad
     );
   }
+`
+export const Error = styled.div`
+  text-align: center;
+  color: red;
+  font-size: 11px;
+  margin-bottom: 10px;
 `

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import englishMessages from '../languages/en.json'
+import englishMessages from '../../languages/en.json'
 
 interface LanguageState {
   language: typeof englishMessages

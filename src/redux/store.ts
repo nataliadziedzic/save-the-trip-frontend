@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import languageReducer from './language'
+import languageReducer from './slices/language'
+import userReducer from './slices/user'
 
 const store = configureStore({
   reducer: {
     language: languageReducer,
+    user: userReducer,
   },
 })
 export type RootState = ReturnType<typeof store.getState>

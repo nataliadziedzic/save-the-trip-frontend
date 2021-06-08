@@ -4,6 +4,14 @@
   "forgot-password": "Forgot password?",
   "password": "Password",
   "confirm-password": "Confirm password",
+  "username": "Username",
   "no-account-sign-up": "Don't have an account? Sign Up.",
-  "have-account-sign-in": "Already have an account? Sign In."
+  "have-account-sign-in": "Already have an account? Sign In.",
+  "create-account-success": "Account successfully created.",
+  "email-requirements-error": "The email address is incorrect.",
+  "password-requirements-error": "The password does not meet specified requirements.",
+  "password-match-error": "Passwords do not match.",
+  "empty-fields": "Fields cannot be empty.",
+  "changes-saved": "Changes have been saved.",
+  "something-wrong": "Something went wrong. Please try again later."
 }
