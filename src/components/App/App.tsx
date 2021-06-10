@@ -1,6 +1,6 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { changeLanguage } from '../../redux/slices/language'
 import englishMessages from '../../languages/en.json'
@@ -11,25 +11,38 @@ import WarningSnackbar from '../Snackbars/WarningSnackbar'
 import SuccessSnackbar from '../Snackbars/SuccessSnackbar'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import TripsPanel from '../TripsPanel/TripsPanel'
+import { setAuthed } from '../../redux/slices/authed'
 
 const App = () => {
   const { language } = useAppSelector(state => state.language)
   const { authed } = useAppSelector(state => state.authed)
+  const user = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
+
   React.useEffect(() => {
     if (navigator.language === 'pl') {
       dispatch(changeLanguage(polishMessages))
     } else {
       dispatch(changeLanguage(englishMessages))
     }
-  }, [])
+  }, [dispatch])
+
+  React.useEffect(() => {
+    if (Object.values(user).some(value => value === null)) {
+      dispatch(setAuthed(false))
+    } else {
+      dispatch(setAuthed(true))
+    }
+  }, [user, dispatch])
 
   return (
     <IntlProvider locale={navigator.language || 'en'} messages={language}>
       <div className='App'>
         <Router>
           <Switch>
-            <Route exact path='/auth' component={Authorization} />
+            <Route exact path='/auth'>
+              {authed ? <Redirect to='/' /> : <Authorization />}
+            </Route>
             <PrivateRoute authed={authed} path='/' component={TripsPanel} />
           </Switch>
         </Router>
