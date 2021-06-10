@@ -13,5 +13,9 @@
   "password-match-error": "Hasła różnią się od siebie.",
   "empty-fields": "Pola nie mogą być puste.",
   "changes-saved": "Zmiany zostały zapisane.",
-  "something-wrong": "Coś poszło nie tak. Spróbuj ponownie później."
+  "default-error": "Coś poszło nie tak. Spróbuj ponownie później.",
+  "incorrect-data": "Podane dane są nieprawidłowe.",
+  "login-email-error": "Konto z takim adresem email nie istnieje.",
+  "login-password-error": "Podane hasło jest nieprawidłowe.",
+  "user-already-exist-error": "Użytkownik z takim adresem email już istnieje."
 }

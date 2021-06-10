@@ -13,5 +13,9 @@
   "password-match-error": "Passwords do not match.",
   "empty-fields": "Fields cannot be empty.",
   "changes-saved": "Changes have been saved.",
-  "something-wrong": "Something went wrong. Please try again later."
+  "default-error": "Something went wrong. Please try again later.",
+  "incorrect-data": "The given data is incorrect.",
+  "login-email-error": "An account with this email address does not exist.",
+  "login-password-error": "Incorrect password.",
+  "user-already-exist-error": "User with this email already exist."
 }

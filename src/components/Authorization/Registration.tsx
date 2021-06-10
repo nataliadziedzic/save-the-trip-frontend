@@ -3,9 +3,10 @@ import { useIntl } from 'react-intl'
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core'
 import { useAppDispatch } from '../../redux/hooks'
 import { setUser } from '../../redux/slices/user'
-import { signUp } from '../../api/api'
+import { signUp } from '../../api/authorization.api'
+import { emailValidation, passwordValidation } from '../../variables'
 import { dispatchSuccess } from '../../commonFunctions/handleSnackbars'
-import Copyright from './Copyright'
+import Copyright from '../Copyright/Copyright'
 import { Error } from './Authorization.style'
 
 export interface RegistrationProps {
@@ -31,9 +32,6 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
     setEmptyError(false)
     setPasswordValidationError(false)
     setPasswordMatchingError(false)
-    const emailValidation = /^\w[\w._+-]+[^.]+@([\w-]+\.)+[\w]{2,4}$/
-    const passwordValidation =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.\\[\]{}\\(\\)?\-“!@#%&\\/,><\\’:;|_~`]*)\S{8,99}$/
     if (username.length === 0 || password.length === 0 || email.length === 0) {
       setEmptyError(true)
       return
@@ -45,7 +43,7 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
       if (!emailValidation.test(email)) {
         setEmailError(true)
       }
-      if (passwordValidation) {
+      if (!passwordValidation.test(password)) {
         setPasswordValidationError(true)
       }
       if (password !== passwordConfirmation) {
@@ -63,14 +61,12 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
       dispatchSuccess('create-account-success')
       dispatch(setUser({ username, id }))
     }
-    signUp(
-      {
-        username,
-        password,
-        email,
-      },
-      actions
-    )
+    const newUser = {
+      username,
+      password,
+      email,
+    }
+    signUp(newUser, actions)
   }
   return (
     <>
