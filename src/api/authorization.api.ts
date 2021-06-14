@@ -27,11 +27,12 @@ export const signUp = async (
     password: string
     email: string
   },
-  action: (username: string, id: number) => void
+  action: (username: string, id: number, email: string) => void
 ) => {
   try {
     const response = await axiosAuthInstance.post(`/register`, user)
-    action(response.data.username, response.data.id)
+    const { username, id, email } = response.data
+    action(username, id, email)
   } catch (error) {
     console.log(error.message)
     handleErrors(error)
@@ -46,11 +47,11 @@ interface UserToAuth {
 export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser) => void) => {
   try {
     const response = await axiosAuthInstance.post('/login', userToAuth)
-    const { username, id } = response.data.user
+    const { username, id, email } = response.data.user
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
     localStorage.setItem('refreshToken', JSON.stringify(response.data.refreshToken))
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
-    return setUser({ username, id })
+    return setUser({ username, id, email })
   } catch (error) {
     console.log(error.message)
     handleErrors(error)
@@ -61,9 +62,9 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
   console.log(refreshToken)
   try {
     const response = await axiosAuthInstance.post('/refresh', { refreshToken })
-    const { username, id } = response.data
+    const { username, id, email } = response.data
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
-    setUser({ username, id })
+    setUser({ username, id, email })
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
   } catch (error) {
     console.log(error.message)

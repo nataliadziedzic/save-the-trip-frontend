@@ -17,5 +17,8 @@
   "incorrect-data": "Podane dane są nieprawidłowe.",
   "login-email-error": "Konto z takim adresem email nie istnieje.",
   "login-password-error": "Podane hasło jest nieprawidłowe.",
-  "user-already-exist-error": "Użytkownik z takim adresem email już istnieje."
+  "user-already-exist-error": "Użytkownik z takim adresem email już istnieje.",
+  "sign-out": "wyloguj",
+  "logo-alt": "Logo z fioletowym samolotem i chmurką w pinezce.",
+  "my-account": "Moje konto"
 }

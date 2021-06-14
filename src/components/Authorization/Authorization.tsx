@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Media from 'react-media'
+import { useIntl } from 'react-intl'
 import { CssBaseline, Paper, Grid } from '@material-ui/core'
 import logo from '../../assets/images/logo.png'
 import Login from './Login'
@@ -12,7 +13,9 @@ const Authorization: React.FC = () => {
     LOGIN,
     REGISTRATION,
   }
+  const intl = useIntl()
   const [view, setView] = React.useState<View>(View.LOGIN)
+
   return (
     <Wrapper>
       <Grid container component='main' className='gridContainer'>
@@ -33,7 +36,7 @@ const Authorization: React.FC = () => {
                   className='authorizationContainer'
                 >
                   <InputsWrapper>
-                    <img src={logo} alt='' className='logo' />
+                    <img src={logo} alt={intl.formatMessage({ id: 'logo-alt' })} className='logo' />
                     {view === View.LOGIN ? (
                       <Login changeView={() => setView(View.REGISTRATION)} />
                     ) : (

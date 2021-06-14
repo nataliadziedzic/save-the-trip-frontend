@@ -56,10 +56,10 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
   }
 
   const registerUser = () => {
-    const actions = (username: string, id: number) => {
+    const actions = (username: string, id: number, email: string) => {
       changeView()
       dispatchSuccess('create-account-success')
-      dispatch(setUser({ username, id }))
+      dispatch(setUser({ username, id, email }))
     }
     const newUser = {
       username,

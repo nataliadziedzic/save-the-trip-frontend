@@ -17,5 +17,8 @@
   "incorrect-data": "The given data is incorrect.",
   "login-email-error": "An account with this email address does not exist.",
   "login-password-error": "Incorrect password.",
-  "user-already-exist-error": "User with this email already exist."
+  "user-already-exist-error": "User with this email already exist.",
+  "sign-out": "sign out",
+  "logo-alt": "Brand logo with purlpe airplane and cloud in a pin.",
+  "my-account": "My account"
 }
