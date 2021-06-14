@@ -12,6 +12,9 @@ import SuccessSnackbar from '../Snackbars/SuccessSnackbar'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import TripsPanel from '../TripsPanel/TripsPanel'
 import { setAuthed } from '../../redux/slices/authed'
+import { setNewToken } from '../../api/authorization.api'
+import { setUser } from '../../redux/slices/user'
+import { AuthedUser } from '../../types'
 
 const App = () => {
   const { language } = useAppSelector(state => state.language)
@@ -25,6 +28,7 @@ const App = () => {
     } else {
       dispatch(changeLanguage(englishMessages))
     }
+    setNewToken((response: AuthedUser) => dispatch(setUser(response)))
   }, [dispatch])
 
   React.useEffect(() => {

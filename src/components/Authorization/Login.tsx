@@ -22,6 +22,7 @@ const Login: React.FC<LoginProps> = ({ changeView }) => {
   const [requirementsError, setRequirementsError] = React.useState(false)
 
   const authenticateUser = () => {
+    setRequirementsError(false)
     if (
       email.length === 0 ||
       password.length === 0 ||
