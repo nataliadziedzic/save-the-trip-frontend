@@ -15,6 +15,7 @@ import { setAuthed } from '../../redux/slices/authed'
 import { setNewToken } from '../../api/authorization.api'
 import { setUser } from '../../redux/slices/user'
 import { AuthedUser } from '../../types'
+import { GlobalStyle } from '../../assets/styles/globalStyles'
 
 const App = () => {
   const { language } = useAppSelector(state => state.language)
@@ -41,6 +42,7 @@ const App = () => {
 
   return (
     <IntlProvider locale={navigator.language || 'en'} messages={language}>
+      <GlobalStyle />
       <div className='App'>
         <Router>
           <Switch>
