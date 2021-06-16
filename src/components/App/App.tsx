@@ -1,6 +1,7 @@
 import React from 'react'
 import { IntlProvider } from 'react-intl'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { StylesProvider } from '@material-ui/core'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { changeLanguage } from '../../redux/slices/language'
 import { setAuthed } from '../../redux/slices/authed'
@@ -8,8 +9,8 @@ import { setUser } from '../../redux/slices/user'
 import englishMessages from '../../languages/en.json'
 import polishMessages from '../../languages/pl.json'
 
-import { StylesProvider } from '@material-ui/core'
 import { GlobalStyle } from '../../assets/styles/globalStyles'
+import TripsContextProvider from '../../context/trip.context'
 import { setNewToken } from '../../api/authorization.api'
 import { AuthedUser } from '../../types'
 
@@ -20,6 +21,7 @@ import SuccessSnackbar from '../Snackbars/SuccessSnackbar'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import TripsPanel from '../TripsPanel/TripsPanel'
 import Header from '../Header/Header'
+import SingleTrip from '../SingleTrip/SingleTrip'
 
 const App = () => {
   const { language } = useAppSelector(state => state.language)
@@ -50,12 +52,15 @@ const App = () => {
         <GlobalStyle />
         <div className='App'>
           <Router>
-            <Header />
+            {authed && <Header />}
             <Switch>
               <Route exact path='/auth'>
                 {authed ? <Redirect to='/' /> : <Authorization />}
               </Route>
-              <PrivateRoute authed={authed} path='/' component={TripsPanel} />
+              <TripsContextProvider>
+                <PrivateRoute authed={authed} path='/' component={TripsPanel} />
+                <PrivateRoute authed={authed} path='/trip/:tripTitle/:id' component={SingleTrip} />
+              </TripsContextProvider>
             </Switch>
           </Router>
           <ErrorSnackbar />

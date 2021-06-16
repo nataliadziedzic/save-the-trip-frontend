@@ -1,38 +1,36 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react'
 import { format } from 'date-fns'
 import { useIntl } from 'react-intl'
 import { useAppSelector } from '../../redux/hooks'
-import { UserTrips } from '../../types'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import { getTrips } from '../../api/trips.api'
 import { TripsContainer, Trip, StyledLink } from './TripsPanel.style'
+import { useTripContext } from '../../context/trip.context'
 
-export interface TripsPanelProps {}
-
-const TripsPanel: React.FC<TripsPanelProps> = () => {
+const TripsPanel: React.FC = () => {
   const intl = useIntl()
   const user = useAppSelector(state => state.user)
-  const [trips, setTrips] = React.useState<UserTrips | []>([])
+  const tripsContext = useTripContext()
   const [tripsDates, setTripsDates] = React.useState<string[]>([])
 
   React.useEffect(() => {
-    getTrips(user.id!, setTrips)
+    tripsContext.fetchTrips(user.id!)
   }, [user.id])
 
   React.useEffect(() => {
     setTripsDates([])
-    if (trips.length > 0) {
-      trips.forEach(trip => {
+    if (tripsContext.trips.length > 0) {
+      tripsContext.trips.forEach(trip => {
         const startDate = new Date(trip.start_date!)
         setTripsDates(state => [...state, format(startDate, 'dd-MM-yyyy')])
       })
     }
-  }, [trips])
+  }, [tripsContext.trips])
 
   return (
     <TripsContainer>
       <h1 className='heading'>{intl.formatMessage({ id: 'heading-my-trips' })}</h1>
-      {trips.map((trip, index) => (
+      {tripsContext.trips.map((trip, index) => (
         <Trip key={trip.id}>
           <div className='tripTitle text'>
             <span className='boldText'>{intl.formatMessage({ id: 'title' })}</span>{' '}
