@@ -20,5 +20,9 @@
   "user-already-exist-error": "User with this email already exist.",
   "sign-out": "sign out",
   "logo-alt": "Brand logo with purlpe airplane and cloud in a pin.",
-  "my-account": "My account"
+  "my-account": "My account",
+  "title": "Title:",
+  "description": "Description:",
+  "heading-my-trips": "My trips",
+  "see": "See"
 }
