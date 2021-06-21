@@ -2,7 +2,8 @@
 import * as React from 'react'
 import { useParams } from 'react-router-dom'
 import { useFindTripContext } from '../../context/trip.context'
-import { TripContainer, TopSection } from './SingleTrip.style'
+import { TripContainer } from './SingleTrip.style'
+import TopSection from './TopSection/TopSection'
 
 const SingleTrip: React.FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -16,12 +17,8 @@ const SingleTrip: React.FC = () => {
 
   return (
     <TripContainer>
-      <TopSection>
-        <div className='imageContainer'></div>
-        <div className='titleContainer'>
-          <h1>{findTripContext.trip?.title}</h1>
-        </div>
-      </TopSection>
+      <TopSection trip={findTripContext.trip!} />
+      <div className='listsContainer'>Shopping list: Documents:</div>
     </TripContainer>
   )
 }
