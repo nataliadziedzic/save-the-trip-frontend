@@ -21,7 +21,6 @@ const SuccessSnackbar: React.FC = () => {
       })
     }
   }, [])
-  console.log(message)
 
   return (
     <div className='successSnackbar'>

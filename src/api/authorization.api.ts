@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { dispatchError } from '../commonFunctions/handleSnackbars'
+import { dispatchError, dispatchSuccess } from '../commonFunctions/handleSnackbars'
 import { AuthedUser } from '../types'
 import { API_PATH } from '../variables'
 import { axiosInstance } from './axiosConfig'
@@ -59,7 +59,6 @@ export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser)
 }
 export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
   const refreshToken = localStorage.getItem('refreshToken') ? JSON.parse(localStorage.getItem('refreshToken')!) : null
-  console.log(refreshToken)
   try {
     const response = await axiosAuthInstance.post('/refresh', { refreshToken })
     const { username, id, email } = response.data
@@ -68,5 +67,16 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
   } catch (error) {
     console.log(error.message)
+  }
+}
+
+export const signOut = async (id: number, action: () => void) => {
+  try {
+    await axiosAuthInstance.get(`/logout/${id}`)
+    action()
+    dispatchSuccess('logout-success')
+  } catch (error) {
+    console.log(error.message)
+    dispatchError('default-error')
   }
 }

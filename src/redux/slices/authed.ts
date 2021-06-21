@@ -13,8 +13,11 @@ const authedSlice = createSlice({
     setAuthed(state, action: PayloadAction<boolean>) {
       state.authed = action.payload
     },
+    logout(state) {
+      state.authed = false
+    },
   },
 })
 
-export const { setAuthed } = authedSlice.actions
+export const { setAuthed, logout } = authedSlice.actions
 export default authedSlice.reducer
