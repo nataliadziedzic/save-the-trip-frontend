@@ -39,6 +39,7 @@ export const StyledSection = styled.section`
   .startDate {
     font-size: 0.9em;
     letter-spacing: 1px;
+    text-transform: uppercase;
     margin-bottom: 4px;
   }
   @media only screen and ${SIZES.tablet} {

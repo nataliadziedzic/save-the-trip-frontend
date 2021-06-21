@@ -36,12 +36,10 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
           </label>
         </ImageContainer>
         <div className='detailsContainer'>
-          <h1 className='heading'>Twoja wycieczka:</h1>
+          <h1 className='heading'>{intl.formatMessage({ id: 'your-trip' })}:</h1>
           <h2 className='title'>{trip?.title}</h2>
-          <h1 className='description'>
-            {trip?.description} asasa saasas asa asa sa sasasa asasasasa asasasa asaasaas sasasasa sasas
-          </h1>
-          <span className='startDate'>ROZPOCZĘCIE:</span>
+          <h1 className='description'>{trip?.description}</h1>
+          <span className='startDate'>{intl.formatMessage({ id: 'start' })}:</span>
           <span className='startDate'>20-09-2020</span>
         </div>
       </div>
