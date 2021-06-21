@@ -29,5 +29,16 @@
   "palm-tree-alt": "Palm tree",
   "add-image": "Add image",
   "your-trip": "Your trip",
-  "start": "Start"
+  "start": "Start",
+  "needed-documents": "Needed documents",
+  "passport": "Passport",
+  "visa": "Visa",
+  "id-card": "ID card",
+  "eu-covid-certificate": "EU Covid Certificate",
+  "covid-pcr-test": "RT-PCR test",
+  "covid-antigen-test": "Antigen test",
+  "vaccination-certificate": "Vaccination certificate",
+  "driving-licence": "Driving licence",
+  "ehic": "EHIC",
+  "shopping-list": "Shopping list"
 }

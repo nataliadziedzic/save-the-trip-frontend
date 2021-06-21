@@ -34,6 +34,9 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     border: none;
   }
+  ul {
+    list-style: none;
+  }
   .button {
     cursor: pointer;
   }

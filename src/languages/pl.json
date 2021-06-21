@@ -29,5 +29,16 @@
   "palm-tree-alt": "Palma",
   "add-image": "Dodaj zdjęcie",
   "your-trip": "Twoja wycieczka",
-  "start": "Rozpoczęcie"
+  "start": "Rozpoczęcie",
+  "needed-documents": "Potrzebne dokumenty",
+  "passport": "Paszport",
+  "visa": "Wiza",
+  "id-card": "Dowód osobisty",
+  "eu-covid-certificate": "Unijny Certyfikat COVID",
+  "covid-pcr-test": "Test RT-PCR",
+  "covid-antigen-test": "Test antygenowy",
+  "vaccination-certificate": "Zaświadczenie o szczepieniu",
+  "driving-licence": "Prawo jazdy",
+  "ehic": "EKUZ",
+  "shopping-list": "Lista zakupów"
 }

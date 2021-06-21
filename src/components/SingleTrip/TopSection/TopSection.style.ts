@@ -5,7 +5,7 @@ export const StyledSection = styled.section`
   width: 100%;
   padding: 24px 10%;
   background-color: #0000001c;
-  font-size: 12px;
+  font-size: 14px;
   .wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -49,7 +49,6 @@ export const StyledSection = styled.section`
     }
   }
   @media only screen and ${SIZES.laptop} {
-    font-size: 13px;
     .wrapper {
       flex-direction: row;
     }
@@ -61,7 +60,6 @@ export const StyledSection = styled.section`
     }
   }
   @media only screen and ${SIZES.laptopL} {
-    font-size: 14px;
     .detailsContainer {
       max-width: 600px;
     }
@@ -94,13 +92,7 @@ export const ImageContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120px;
-    padding: 4px 8px;
-    border: 1px solid white;
-    border-radius: 5px;
-    text-align: center;
     background-color: #822067de;
-    transition: 0.3s;
   }
   @media only screen and ${SIZES.laptopL} {
     .button {
