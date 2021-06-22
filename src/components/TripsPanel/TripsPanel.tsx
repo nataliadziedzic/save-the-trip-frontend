@@ -43,7 +43,7 @@ const TripsPanel: React.FC = () => {
           <div className='tripStart text'>
             <span className='boldText'>Start:</span> {tripsDates[index]}
           </div>
-          <StyledLink to={`/trip/${trip.title}/${trip.id}`}>
+          <StyledLink to={`/trip/${trip.title?.replace(/\s/g, '-').toLowerCase()}/${trip.id}`}>
             <span>{intl.formatMessage({ id: 'see' })}</span>
             <ArrowForwardIosIcon />
           </StyledLink>
