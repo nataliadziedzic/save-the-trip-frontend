@@ -7,6 +7,7 @@ export const DocumentsWrapper = styled.section`
   }
   li {
     margin-top: 8px;
+    color: #fff;
   }
   .MuiSvgIcon-root {
     margin: 0 4px;

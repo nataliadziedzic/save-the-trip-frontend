@@ -9,6 +9,7 @@ export const LogoutWrapper = styled.div`
   cursor: pointer;
   .title {
     font-size: 13px;
+    color: #fff;
   }
 `
 

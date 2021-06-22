@@ -34,11 +34,11 @@ const TripsPanel: React.FC = () => {
         <Trip key={trip.id}>
           <div className='tripTitle text'>
             <span className='boldText'>{intl.formatMessage({ id: 'title' })}</span>{' '}
-            {trip.title?.length! > 20 ? trip.title?.slice(0, 20)! + '...' : trip.title}
+            {trip.title?.length! > 30 ? trip.title?.slice(0, 30)! + '...' : trip.title}
           </div>
           <div className='tripDescription text'>
             <span className='boldText'>{intl.formatMessage({ id: 'description' })}</span>{' '}
-            {trip.description?.length! > 20 ? trip.description?.slice(0, 20)! + '...' : trip.description}
+            {trip.description?.length! > 25 ? trip.description?.slice(0, 25)! + '...' : trip.description}
           </div>
           <div className='tripStart text'>
             <span className='boldText'>Start:</span> {tripsDates[index]}

@@ -33,7 +33,7 @@ export const StyledSection = styled.section`
     margin-bottom: 4px;
   }
   .description {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin-bottom: 24px;
   }
   .startDate {
@@ -41,6 +41,14 @@ export const StyledSection = styled.section`
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 4px;
+  }
+  .MuiSvgIcon-root {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  .heading, .title, .description, .startDate {
+    color: #fff;
   }
   @media only screen and ${SIZES.tablet} {
     .detailsContainer {
@@ -61,6 +69,9 @@ export const StyledSection = styled.section`
   }
   @media only screen and ${SIZES.laptopL} {
     .detailsContainer {
+      align-items: flex-start;
+      text-align: left;
+      margin-left: 120px;
       max-width: 600px;
     }
   }
@@ -103,5 +114,33 @@ export const ImageContainer = styled.div`
   }
   @media only screen and ${SIZES.desktop} {
     width: 600px;
+  }
+`
+export const EditFieldWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  .button .MuiSvgIcon-root {
+    margin-left: 16px;
+    margin-bottom: 16px;
+    fill: #77f977;
+    transition: 0.3s;
+    &:hover {
+      font-size: 32px;
+    }
+  }
+  .dateButton .MuiSvgIcon-root {
+    margin-bottom: 0;
+    margin-top: 16px;
+  }
+  .MuiSvgIcon-root {
+    font-size: 27px;
+  }
+  .MuiFormControl-root {
+    width: calc(100% - 50px);
+  }
+  @media only screen and ${SIZES.tablet} {
+    width: 380px;
   }
 `

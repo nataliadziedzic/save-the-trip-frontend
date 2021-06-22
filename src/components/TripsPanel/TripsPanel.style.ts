@@ -14,6 +14,9 @@ export const TripsContainer = styled.section`
     text-transform: uppercase;
     margin-bottom: 32px;
   }
+  *{
+    color: #fff;
+  }
 `
 export const Trip = styled.div`
   width: 100%;

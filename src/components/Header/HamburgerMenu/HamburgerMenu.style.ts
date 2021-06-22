@@ -5,6 +5,9 @@ export const MenuContainer = styled.div`
   border: 1px solid #fff;
   border-radius: 3px;
   padding: 2px 4px;
+  .MuiSvgIcon-root {
+    fill: #fff;
+  }
 `
 export const StyledMenu = styled(Menu)`
   .MuiPaper-root {

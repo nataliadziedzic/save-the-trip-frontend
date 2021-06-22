@@ -19,5 +19,6 @@ export const User = styled.div`
   .username {
     margin-right: 8px;
     font-size: 14px;
+    color: #fff;
   }
 `

@@ -9,7 +9,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-decoration: none;
-    color: #fff;
   }
   html {
     font-size: 14px;
@@ -39,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .button {
     cursor: pointer;
+    color: #fff;
   }
   .outlinedButton {
     width: 120px;

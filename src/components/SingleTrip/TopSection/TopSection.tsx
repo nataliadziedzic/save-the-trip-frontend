@@ -2,6 +2,9 @@ import * as React from 'react'
 import { useIntl } from 'react-intl'
 import palmTree from '../../../assets/images/palm-tree.jpg'
 import { ITrip } from '../../../types'
+import TripTitle from './TripTitle'
+import TripDescription from './TripDescription'
+import TripStartDate from './TripStartDate'
 import { ImageContainer, StyledSection } from './TopSection.style'
 
 export interface TopSectionProps {
@@ -37,10 +40,10 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
         </ImageContainer>
         <div className='detailsContainer'>
           <h1 className='heading'>{intl.formatMessage({ id: 'your-trip' })}:</h1>
-          <h2 className='title'>{trip?.title}</h2>
-          <h1 className='description'>{trip?.description}</h1>
+          <TripTitle trip={trip} />
+          <TripDescription trip={trip} />
           <span className='startDate'>{intl.formatMessage({ id: 'start' })}:</span>
-          <span className='startDate'>20-09-2020</span>
+          <TripStartDate trip={trip} />
         </div>
       </div>
     </StyledSection>

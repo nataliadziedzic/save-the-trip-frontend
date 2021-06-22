@@ -14,7 +14,7 @@ export const getTrips = async (userId: number, setTrips: (trips: ITrip[]) => voi
 interface ITripToUpdate {
   title?: string
   description?: string
-  start_date?: Date
+  start_date?: string
 }
 
 export const updateTrip = async (id: number, body: ITripToUpdate) => {
