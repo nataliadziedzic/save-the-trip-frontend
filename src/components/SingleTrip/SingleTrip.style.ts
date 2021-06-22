@@ -34,15 +34,6 @@ export const TripContainer = styled.div`
       vertical-align: bottom;
     }
   }
-  .button {
-    width: 120px;
-    padding: 4px 8px;
-    border: 1px solid white;
-    border-radius: 5px;
-    text-align: center;
-    margin: 16px auto 0;
-    transition: 0.3s;
-  }
   @media only screen and ${SIZES.tablet} {
     .listsContainer {
     grid-template-columns: 1fr 1fr;

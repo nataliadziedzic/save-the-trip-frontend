@@ -40,6 +40,19 @@ export const GlobalStyle = createGlobalStyle`
   .button {
     cursor: pointer;
   }
+  .outlinedButton {
+    width: 120px;
+    padding: 4px 8px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 16px auto 0;
+    transition: 0.3s;
+      &:hover {
+        background-color: #74164b;
+    }
+  }
   .MuiAlert-message, .MuiAlert-icon path, .MuiAlert-action path, .MuiButton-label {
     color: #fff;
   }

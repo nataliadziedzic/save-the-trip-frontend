@@ -15,7 +15,7 @@ const ShoppingList: React.FC<ShoppingListProps> = ({ trip }) => {
       <h3 className='listTitle'>
         {intl.formatMessage({ id: 'shopping-list' })} <AttachMoneyIcon />
       </h3>
-      <div className='button'>DODAJ</div>
+      <div className='button outlinedButton'>DODAJ</div>
     </ListWrapper>
   )
 }

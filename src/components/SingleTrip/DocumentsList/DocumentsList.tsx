@@ -36,6 +36,7 @@ const DocumentsList: React.FC<DocumentsListProps> = ({ trip }) => {
       getDocuments(trip.id!, setAllDocuments)
     }
   }, [trip])
+
   React.useEffect(() => {
     let docs: string[] = []
     _.mapObject(allDocuments, (value, key) => {
@@ -56,7 +57,7 @@ const DocumentsList: React.FC<DocumentsListProps> = ({ trip }) => {
         {selectedDocuments.map((document, index) => (
           <li key={index}>{document}</li>
         ))}
-        <div className='button'>EDIT</div>
+        <div className='button outlinedButton'>{intl.formatMessage({ id: 'edit' })}</div>
       </ul>
     </DocumentsWrapper>
   )

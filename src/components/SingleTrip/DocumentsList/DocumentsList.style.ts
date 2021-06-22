@@ -5,12 +5,6 @@ export const DocumentsWrapper = styled.section`
   .listTitle {
     color: gold;
   }
-  .button {
-    text-transform: uppercase;
-    &:hover {
-      background-color: #74164b;
-    }
-  }
   li {
     margin-top: 8px;
   }

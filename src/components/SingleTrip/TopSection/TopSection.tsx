@@ -32,7 +32,7 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
           />
           <label htmlFor={`updateTripImg${trip?.id}`} className='uploadImageLabel'>
             <img src={imageUrl || palmTree} alt={intl.formatMessage({ id: 'palm-tree-alt' })} />
-            <div className='button'>{intl.formatMessage({ id: 'add-image' })}</div>
+            <div className='button outlinedButton'>{intl.formatMessage({ id: 'add-image' })}</div>
           </label>
         </ImageContainer>
         <div className='detailsContainer'>
