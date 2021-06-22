@@ -41,5 +41,6 @@
   "driving-licence": "Driving licence",
   "ehic": "EHIC",
   "shopping-list": "Shopping list",
-  "edit": "Edit"
+  "edit": "Edit",
+  "session-expired": "The session has expired"
 }

@@ -67,6 +67,7 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
   } catch (error) {
     console.log(error.message)
+    dispatchError('session-expired')
   }
 }
 

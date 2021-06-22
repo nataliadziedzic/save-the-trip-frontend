@@ -1,11 +1,11 @@
-export const dispatchError = (messageId: string) => {
+export const dispatchError = (messageId?: string) => {
   const errorSnackbar = document.querySelector('.errorSnackbar')
   const errorEvent = new CustomEvent('error', {
     detail: { messageId },
   })
   return errorSnackbar!.dispatchEvent(errorEvent)
 }
-export const dispatchSuccess = (messageId: string) => {
+export const dispatchSuccess = (messageId?: string) => {
   const successSnackbar = document.querySelector('.successSnackbar')
   const successEvent = new CustomEvent('success', {
     detail: { messageId },
