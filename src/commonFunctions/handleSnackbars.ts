@@ -26,7 +26,9 @@ export const displayMessage = (
   setMessage: (arg: string) => void
 ) => {
   setState(true)
-  setMessage(event.detail.messageId)
+  if (event.detail.messageId) {
+    setMessage(event.detail.messageId)
+  }
 }
 export const isCustomEvent = (event: Event): event is CustomEvent => {
   return 'detail' in event
