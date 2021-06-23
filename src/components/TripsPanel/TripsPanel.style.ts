@@ -13,8 +13,17 @@ export const TripsContainer = styled.section`
   .heading {
     text-transform: uppercase;
     margin-bottom: 32px;
+    .MuiSvgIcon-root {
+      margin-left: 8px;
+      vertical-align: sub;
+    }
   }
-  *{
+  .button {
+    width: auto;
+    padding: 8px 24px;
+    background-color: #1f4e81;
+  }
+  * {
     color: #fff;
   }
 `

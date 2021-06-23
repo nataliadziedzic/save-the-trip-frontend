@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   body{
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to right top, #7ca5c9, #6e90ad, #607c91, #546877, #48555e, #4b565e, #4e575d, #51585d, #646e76, #788690, #8c9dab, #a1b6c7);   
-   }
+    background-image: linear-gradient(to right top, #e367da, #b56ad5, #8969c9, #6064b6, #3c5d9f, #2f5795, #21518a, #124b80, #124683, #1a4186, #253b86, #323386); 
+  }
   .App, #root {
     height: 100%;
     width: 100%;

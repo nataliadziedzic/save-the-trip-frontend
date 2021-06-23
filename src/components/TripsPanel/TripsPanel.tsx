@@ -3,6 +3,7 @@ import * as React from 'react'
 import { format } from 'date-fns'
 import { useIntl } from 'react-intl'
 import { useAppSelector } from '../../redux/hooks'
+import WorkIcon from '@material-ui/icons/Work'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { TripsContainer, Trip, StyledLink } from './TripsPanel.style'
 import { useTripContext } from '../../context/trip.context'
@@ -29,7 +30,9 @@ const TripsPanel: React.FC = () => {
 
   return (
     <TripsContainer>
-      <h1 className='heading'>{intl.formatMessage({ id: 'heading-my-trips' })}</h1>
+      <h1 className='heading'>
+        {intl.formatMessage({ id: 'heading-my-trips' })} <WorkIcon />
+      </h1>
       {tripsContext.trips.map((trip, index) => (
         <Trip key={trip.id}>
           <div className='tripTitle text'>
@@ -49,6 +52,7 @@ const TripsPanel: React.FC = () => {
           </StyledLink>
         </Trip>
       ))}
+      <div className='button outlinedButton'>Dodaj Podróż</div>
     </TripsContainer>
   )
 }
