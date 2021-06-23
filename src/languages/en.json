@@ -42,5 +42,15 @@
   "ehic": "EHIC",
   "shopping-list": "Shopping list",
   "edit": "Edit",
-  "session-expired": "The session has expired"
+  "session-expired": "The session has expired",
+  "empty-warning": "Fields cannot be empty",
+  "add-trip": "Add trip",
+  "save": "Save",
+  "cancel": "Cancel",
+  "create-trip-heading": "Plan your trip",
+  "create-trip-intro": "Add a title and description of the trip to easily distinguish it from the rest, and a start date to get things done on time.",
+  "add-documents-intro": "Make sure you don't forget to pack the documents you need for your departure. Choose those ones you want to take with you.",
+  "documents": "Documents",
+  "create-trip-success": "New trip added.",
+  "add-documents-success": "Updated documents for your trip."
 }

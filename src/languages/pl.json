@@ -42,5 +42,15 @@
   "ehic": "EKUZ",
   "shopping-list": "Lista zakupów",
   "edit": "Edytuj",
-  "session-expired": "Sesja wygasła"
+  "session-expired": "Sesja wygasła",
+  "empty-warning": "Pola nie mogąbyć puste",
+  "add-trip": "Dodaj podróż",
+  "save": "Zapisz",
+  "cancel": "Cofnij",
+  "create-trip-heading": "Zaplanuj podróż",
+  "create-trip-intro": "Dodaj tytuł i opis podróży, aby łatwo odróżnić ją od pozostałych, oraz datę rozpoczęcia, aby załatwić wszystkie sprawy na czas.",
+  "add-documents-intro": "Upewnij się ze nie zapomnisz spakować potrzebnych do wyjazdu dokumentów. Zaznacz te, które zamierzasz ze sobą zabrać.",
+  "documents": "Dokumenty",
+  "create-trip-success": "Dodano nową podróż.",
+  "add-documents-success": "Zaktualizowano dokumenty dla Twojej podróży."
 }

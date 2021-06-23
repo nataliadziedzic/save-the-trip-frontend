@@ -5,15 +5,15 @@ export interface AuthedUser {
 }
 
 export interface ITrip {
-  id: number | null
+  id?: number | null
   title: string | null
   description: string | null
-  img: string | null
+  img?: string | null
   user_id: number | null
   start_date: string | null
 }
 export interface IDocuments {
-  id: number
+  id?: number
   passport: boolean
   visa: boolean
   id_card: boolean

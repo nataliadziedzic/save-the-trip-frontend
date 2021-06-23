@@ -5,6 +5,7 @@ import { ITrip } from '../types'
 interface TripsContextValue {
   trips: ITrip[]
   fetchTrips: (id: number) => void
+  updateTrips: (trip: ITrip) => void
 }
 interface FindTripContextValue {
   trip: ITrip | null
@@ -41,12 +42,16 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({ children })
       setTrip(singleTrip!)
     }
   }
+  const updateTrips = (trip: ITrip) => {
+    setTrips(state => [...state, trip])
+  }
 
   return (
     <TripsContext.Provider
       value={{
         trips,
         fetchTrips,
+        updateTrips,
       }}
     >
       <FindTripContext.Provider value={{ trip, findTrip }}>{children}</FindTripContext.Provider>

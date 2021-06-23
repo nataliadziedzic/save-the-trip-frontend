@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { SIZES } from '../../assets/styles/mediaQueries'
 
 export const TripsContainer = styled.section`
@@ -22,6 +22,7 @@ export const TripsContainer = styled.section`
     width: auto;
     padding: 8px 24px;
     background-color: #1f4e81;
+    margin-bottom: 32px;
   }
   * {
     color: #fff;

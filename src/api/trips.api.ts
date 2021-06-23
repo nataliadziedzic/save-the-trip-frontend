@@ -26,3 +26,21 @@ export const updateTrip = async (id: number, body: ITripToUpdate) => {
     dispatchError()
   }
 }
+export const createTrip = async (
+  body: ITrip,
+  setDocumentsId: (id: number) => void,
+  setTripId: (id: number) => void,
+  updateTripsInPanel: (trip: ITrip) => void
+) => {
+  try {
+    const response = await axiosInstance.post('/trips', body)
+    const { trip, documents_list_id } = response.data
+    setDocumentsId(documents_list_id)
+    setTripId(trip.id)
+    updateTripsInPanel(trip)
+    dispatchSuccess('create-trip-success')
+  } catch (error) {
+    console.log(error.message)
+    dispatchError()
+  }
+}
