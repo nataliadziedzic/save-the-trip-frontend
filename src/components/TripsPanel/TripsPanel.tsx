@@ -5,33 +5,38 @@ import { useIntl } from 'react-intl'
 import { useAppSelector } from '../../redux/hooks'
 import WorkIcon from '@material-ui/icons/Work'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import { TripsContainer, Trip, StyledLink } from './TripsPanel.style'
+
 import { useTripContext } from '../../context/trip.context'
+import DocumentsContextProvider from '../../context/documents.context'
+
 import AddTripDialog from './AddTripDialog/AddTripDialog'
 import AddDocsDialog from './AddDocsDialog/AddDocsDialog'
-import DocumentsContextProvider from '../../context/documents.context'
+import DeleteTrip from './DeleteTrip/DeleteTrip'
+import { TripsContainer, Trip, StyledLink, MobileActionsWrapper } from './TripsPanel.style'
+import Media from 'react-media'
+import { SIZES } from '../../assets/styles/mediaQueries'
 
 const TripsPanel: React.FC = () => {
   const intl = useIntl()
   const user = useAppSelector(state => state.user)
-  const tripsContext = useTripContext()
+  const tripContext = useTripContext()
   const [tripsDates, setTripsDates] = React.useState<string[]>([])
   const [openTripDialog, setOpenTripDialog] = React.useState(false)
   const [openDocsDialog, setOpenDocsDialog] = React.useState(false)
 
   React.useEffect(() => {
-    tripsContext.fetchTrips(user.id!)
+    tripContext.fetchTrips(user.id!)
   }, [user.id])
 
   React.useEffect(() => {
     setTripsDates([])
-    if (tripsContext.trips.length > 0) {
-      tripsContext.trips.forEach(trip => {
+    if (tripContext.trips.length > 0) {
+      tripContext.trips.forEach(trip => {
         const startDate = new Date(trip.start_date!)
         setTripsDates(state => [...state, format(startDate, 'dd-MM-yyyy')])
       })
     }
-  }, [tripsContext.trips])
+  }, [tripContext.trips])
 
   return (
     <DocumentsContextProvider>
@@ -39,23 +44,38 @@ const TripsPanel: React.FC = () => {
         <h1 className='heading'>
           {intl.formatMessage({ id: 'heading-my-trips' })} <WorkIcon />
         </h1>
-        {tripsContext.trips.map((trip, index) => (
+        {tripContext.trips.map((trip, index) => (
           <Trip key={trip.id}>
+            <Media query={SIZES.tablet}>{matches => matches && <DeleteTrip trip={trip} />}</Media>
             <div className='tripTitle text'>
               <span className='boldText'>{intl.formatMessage({ id: 'title' })}</span>{' '}
-              {trip.title?.length! > 30 ? trip.title?.slice(0, 30)! + '...' : trip.title}
+              {trip.title?.length! > 25 ? trip.title?.slice(0, 25)! + '...' : trip.title}
             </div>
             <div className='tripDescription text'>
               <span className='boldText'>{intl.formatMessage({ id: 'description' })}</span>{' '}
-              {trip.description?.length! > 25 ? trip.description?.slice(0, 25)! + '...' : trip.description}
+              {trip.description?.length! > 20 ? trip.description?.slice(0, 20)! + '...' : trip.description}
             </div>
             <div className='tripStart text'>
               <span className='boldText'>Start:</span> {tripsDates[index]}
             </div>
-            <StyledLink to={`/trip/${trip.title?.replace(/\s/g, '-').toLowerCase()}/${trip.id}`}>
-              <span>{intl.formatMessage({ id: 'see' })}</span>
-              <ArrowForwardIosIcon />
-            </StyledLink>
+            <Media query={SIZES.tablet}>
+              {matches =>
+                !matches ? (
+                  <MobileActionsWrapper>
+                    <DeleteTrip trip={trip} />
+                    <StyledLink to={`/trip/${trip.title?.replace(/\s/g, '-').toLowerCase()}/${trip.id}`}>
+                      <span>{intl.formatMessage({ id: 'see' })}</span>
+                      <ArrowForwardIosIcon />
+                    </StyledLink>
+                  </MobileActionsWrapper>
+                ) : (
+                  <StyledLink to={`/trip/${trip.title?.replace(/\s/g, '-').toLowerCase()}/${trip.id}`}>
+                    <span>{intl.formatMessage({ id: 'see' })}</span>
+                    <ArrowForwardIosIcon />
+                  </StyledLink>
+                )
+              }
+            </Media>
           </Trip>
         ))}
         <div className='button outlinedButton' onClick={() => setOpenTripDialog(true)}>

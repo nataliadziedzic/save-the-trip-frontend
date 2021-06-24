@@ -52,5 +52,11 @@
   "add-documents-intro": "Upewnij się ze nie zapomnisz spakować potrzebnych do wyjazdu dokumentów. Zaznacz te, które zamierzasz ze sobą zabrać.",
   "documents": "Dokumenty",
   "create-trip-success": "Dodano nową podróż.",
-  "add-documents-success": "Zaktualizowano dokumenty dla Twojej podróży."
+  "add-documents-success": "Zaktualizowano dokumenty dla Twojej podróży.",
+  "delete": "Usuń",
+  "delete-success": "Pomyślnie usunięto.",
+  "delete-error": "Nie udało się usunąć elementu. Spróbuj ponownie później.",
+  "delete-confirmation": "Czy na pewno chcesz usunąć",
+  "yes": "Tak",
+  "no": "Nie"
 }

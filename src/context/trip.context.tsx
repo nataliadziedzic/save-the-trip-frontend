@@ -6,6 +6,7 @@ interface TripsContextValue {
   trips: ITrip[]
   fetchTrips: (id: number) => void
   updateTrips: (trip: ITrip) => void
+  deleteTripFromArray: (id: number) => void
 }
 interface FindTripContextValue {
   trip: ITrip | null
@@ -45,6 +46,9 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({ children })
   const updateTrips = (trip: ITrip) => {
     setTrips(state => [...state, trip])
   }
+  const deleteTripFromArray = (id: number) => {
+    setTrips(trips.filter(trip => trip.id !== id))
+  }
 
   return (
     <TripsContext.Provider
@@ -52,6 +56,7 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({ children })
         trips,
         fetchTrips,
         updateTrips,
+        deleteTripFromArray,
       }}
     >
       <FindTripContext.Provider value={{ trip, findTrip }}>{children}</FindTripContext.Provider>

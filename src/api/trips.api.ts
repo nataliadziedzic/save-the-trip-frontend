@@ -44,3 +44,14 @@ export const createTrip = async (
     dispatchError()
   }
 }
+
+export const deleteTrip = async (id: number, updateState: () => void) => {
+  try {
+    await axiosInstance.delete(`/trip/${id}`)
+    updateState()
+    dispatchSuccess('delete-success')
+  } catch (error) {
+    console.log(error.message)
+    dispatchError('delete-error')
+  }
+}

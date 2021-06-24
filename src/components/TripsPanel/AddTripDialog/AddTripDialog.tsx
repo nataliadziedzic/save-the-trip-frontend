@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useIntl } from 'react-intl'
-import { DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from '@material-ui/core'
+import { DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core'
 import { useSetDocumentsContext } from '../../../context/documents.context'
 import { createTrip } from '../../../api/trips.api'
 import { dispatchWarning } from '../../../commonFunctions/handleSnackbars'
@@ -8,6 +8,7 @@ import DatePicker from '../../common/DatePicker/DatePicker'
 import { StyledDialog } from './AddTripDialog.style'
 import format from 'date-fns/format'
 import { useTripContext } from '../../../context/trip.context'
+import DialogButton from '../../common/DialogButton/DialogButton'
 
 export interface AddTripDialogProps {
   open: boolean
@@ -74,12 +75,8 @@ const AddTripDialog: React.FC<AddTripDialogProps> = ({ open, setOpen, userId, se
         <DatePicker currentDate={new Date()} setCurrentDateSend={setStartDate} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color='primary' className='cancel'>
-          {intl.formatMessage({ id: 'cancel' })}
-        </Button>
-        <Button onClick={handleCreateTrip} color='primary' className='save'>
-          {intl.formatMessage({ id: 'save' })}
-        </Button>
+        <DialogButton textContent='cancel' onClick={handleClose} />
+        <DialogButton textContent='save' onClick={handleCreateTrip} primary />
       </DialogActions>
     </StyledDialog>
   )

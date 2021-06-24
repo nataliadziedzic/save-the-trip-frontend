@@ -49,10 +49,20 @@ export const Trip = styled.div`
   .boldText {
     font-weight: 500;
   }
+  .deleteIconButton {
+    cursor: pointer;
+  }
+  .deleteIconWrapper {
+    grid-row: 5;
+  }
   @media only screen and ${SIZES.tablet} {
-    grid-template-columns: 1fr 1fr 1fr 100px;
+    grid-template-columns: 50px 1fr 1fr 1fr 100px;
+    column-gap: 8px;
     align-items: center;
     justify-items: start;
+    .deleteIconWrapper {
+      grid-row: 1;
+    }
   }
 `
 export const StyledLink = styled(Link)`
@@ -86,4 +96,9 @@ export const StyledLink = styled(Link)`
   @media only screen and ${SIZES.tablet} {
     justify-self: end;
   }
+`
+export const MobileActionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-items: center;
 `

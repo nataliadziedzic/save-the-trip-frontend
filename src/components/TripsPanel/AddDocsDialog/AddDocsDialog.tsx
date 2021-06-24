@@ -1,17 +1,10 @@
 import * as React from 'react'
 import { useIntl } from 'react-intl'
-import {
-  DialogContentText,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  Divider,
-  Checkbox,
-} from '@material-ui/core'
+import { DialogContentText, DialogTitle, DialogContent, DialogActions, Divider, Checkbox } from '@material-ui/core'
 import { addDocuments } from '../../../api/documents.api'
 import { useDocumentsContext } from '../../../context/documents.context'
 import { DocumentsList, StyledDocsDialog } from './AddDocs.style'
+import DialogButton from '../../common/DialogButton/DialogButton'
 
 export interface AddDocsDialogProps {
   open: boolean
@@ -60,9 +53,9 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
     setOpen(false)
   }
   const addTripDocuments = () => {
-    if (documentsContext.documentsId && documentsContext.tripId) {
+    if (documentsContext.tripId) {
       addDocuments(
-        documentsContext.documentsId,
+        documentsContext.tripId,
         {
           passport,
           visa,
@@ -77,7 +70,7 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
           ehic,
         },
         () => setOpen(false),
-        () => availableDocs.map((document, index) => document.changeFunction(false))
+        () => availableDocs.map(document => document.changeFunction(false))
       )
     }
   }
@@ -103,9 +96,10 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
         </DocumentsList>
       </DialogContent>
       <DialogActions>
-        <Button onClick={addTripDocuments} color='primary' className='save'>
+        {/* <Button onClick={addTripDocuments} color='primary' className='save'>
           {intl.formatMessage({ id: 'save' })}
-        </Button>
+        </Button> */}
+        <DialogButton textContent='save' onClick={addTripDocuments} primary />
       </DialogActions>
     </StyledDocsDialog>
   )

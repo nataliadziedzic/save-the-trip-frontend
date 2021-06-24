@@ -52,5 +52,11 @@
   "add-documents-intro": "Make sure you don't forget to pack the documents you need for your departure. Choose those ones you want to take with you.",
   "documents": "Documents",
   "create-trip-success": "New trip added.",
-  "add-documents-success": "Updated documents for your trip."
+  "add-documents-success": "Updated documents for your trip.",
+  "delete": "Delete",
+  "delete-success": "Deleted successfully",
+  "delete-error": "Item could not be deleted. Try again later.",
+  "delete-confirmation": "Are you sure you want to delete",
+  "yes": "Yes",
+  "no": "No"
 }

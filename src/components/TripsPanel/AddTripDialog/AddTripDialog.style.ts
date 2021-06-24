@@ -2,18 +2,6 @@ import styled from 'styled-components'
 import { Dialog } from '@material-ui/core'
 
 export const StyledDialog = styled(Dialog)`
-  .cancel .MuiButton-label {
-    color: #74164b;
-  }
-  .save .MuiButton-label {
-    color: #1f4e81;
-  }
-  .MuiButton-label {
-    font-weight: 500;
-  }
-  .MuiButton-textPrimary:hover {
-    background-color: #b7cbe59e;
-  }
   .MuiInputBase-input {
     color: #000 !important;
   }

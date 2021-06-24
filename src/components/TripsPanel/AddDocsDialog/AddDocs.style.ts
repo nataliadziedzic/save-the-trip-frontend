@@ -32,7 +32,7 @@ export const StyledDocsDialog = styled(StyledDialog)`
     background-color: rgba(0, 0, 0, 0.64);
     margin-top: 8px;
   }
-  .save {
+  .MuiButton-root {
     margin-right: 24px;
   }
 `
