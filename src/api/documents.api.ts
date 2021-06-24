@@ -10,11 +10,17 @@ export const getDocuments = async (tripId: number, setDocuments: (documents: IDo
     console.log(error.message)
   }
 }
-export const addDocuments = async (id: number, documents: IDocuments, closeEditMode: () => void) => {
+export const addDocuments = async (
+  id: number,
+  documents: IDocuments,
+  closeEditMode: () => void,
+  clearData: () => void
+) => {
   try {
     await axiosInstance.put(`/documents/${id}`, documents)
     dispatchSuccess('add-documents-success')
     closeEditMode()
+    clearData()
   } catch (error) {
     console.log(error.message)
     dispatchError()

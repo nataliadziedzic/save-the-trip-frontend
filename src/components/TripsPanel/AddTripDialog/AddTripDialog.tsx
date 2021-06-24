@@ -41,6 +41,9 @@ const AddTripDialog: React.FC<AddTripDialogProps> = ({ open, setOpen, userId, se
         setDocumentsContext.setTripId,
         tripsContext.updateTrips
       )
+      setTitle('')
+      setDescription('')
+      setStartDate(format(new Date(), 'yyyy-MM-dd'))
       setOpen(false)
       setOpenDocumentsDialog(true)
     } else dispatchWarning('empty-warning')

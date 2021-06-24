@@ -76,7 +76,8 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
           user_id: userId,
           ehic,
         },
-        () => setOpen(false)
+        () => setOpen(false),
+        () => availableDocs.map((document, index) => document.changeFunction(false))
       )
     }
   }
