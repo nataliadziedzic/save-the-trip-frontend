@@ -46,7 +46,7 @@ const TripsPanel: React.FC = () => {
         </h1>
         {tripContext.trips.map((trip, index) => (
           <Trip key={trip.id}>
-            <Media query={SIZES.tablet}>{matches => matches && <DeleteTrip trip={trip} />}</Media>
+            <Media query={SIZES.tablet}>{matches => matches && <DeleteTrip trip={trip} withText={false} />}</Media>
             <div className='tripTitle text'>
               <span className='boldText'>{intl.formatMessage({ id: 'title' })}</span>{' '}
               {trip.title?.length! > 25 ? trip.title?.slice(0, 25)! + '...' : trip.title}
@@ -62,7 +62,7 @@ const TripsPanel: React.FC = () => {
               {matches =>
                 !matches ? (
                   <MobileActionsWrapper>
-                    <DeleteTrip trip={trip} />
+                    <DeleteTrip trip={trip} withText />
                     <StyledLink to={`/trip/${trip.title?.replace(/\s/g, '-').toLowerCase()}/${trip.id}`}>
                       <span>{intl.formatMessage({ id: 'see' })}</span>
                       <ArrowForwardIosIcon />

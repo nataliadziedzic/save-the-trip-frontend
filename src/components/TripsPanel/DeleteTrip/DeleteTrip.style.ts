@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const DeleteIconWrapper = styled.div`
+  .deleteIconButton {
+    cursor: pointer;
+  }
+`
 export const StyledIconButton = styled.span`
   display: flex;
   align-items: center;

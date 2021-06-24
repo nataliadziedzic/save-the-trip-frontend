@@ -2,6 +2,7 @@
 import * as React from 'react'
 import Media from 'react-media'
 import { useIntl } from 'react-intl'
+import { useParams } from 'react-router-dom'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
 import { ITrip } from '../../../types'
@@ -10,19 +11,22 @@ import { deleteTrip } from '../../../api/trips.api'
 import { SIZES } from '../../../assets/styles/mediaQueries'
 
 import DeleteDialog from '../../common/DeleteDialog/DeleteDialog'
-import { StyledIconButton } from './DeleteTrip.style'
+import { DeleteIconWrapper, StyledIconButton } from './DeleteTrip.style'
 
 export interface DeleteTripProps {
   trip: ITrip
+  withText: boolean
 }
 
-const DeleteTrip: React.FC<DeleteTripProps> = ({ trip }) => {
+const DeleteTrip: React.FC<DeleteTripProps> = ({ trip, withText }) => {
   interface TripToDelete {
     id: number
     title: string
   }
   const tripContext = useTripContext()
   const intl = useIntl()
+  const { tripTitle } = useParams<{ tripTitle: string }>()
+
   const [tripToDelete, setTripToDelete] = React.useState<null | TripToDelete>(null)
   const [shouldDelete, setShouldDelete] = React.useState(false)
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
@@ -39,7 +43,7 @@ const DeleteTrip: React.FC<DeleteTripProps> = ({ trip }) => {
     }
   }, [tripToDelete, shouldDelete])
   return (
-    <div className='deleteIconWrapper'>
+    <DeleteIconWrapper className='deleteIconWrapper'>
       <Media query={SIZES.tablet}>
         {matches =>
           matches ? (
@@ -48,7 +52,7 @@ const DeleteTrip: React.FC<DeleteTripProps> = ({ trip }) => {
             </span>
           ) : (
             <StyledIconButton className='deleteIconButton' onClick={() => handleDeleteTrip(trip.id!, trip.title!)}>
-              {intl.formatMessage({ id: 'delete' })} <DeleteOutlineIcon />
+              {withText && intl.formatMessage({ id: 'delete' })} <DeleteOutlineIcon />
             </StyledIconButton>
           )
         }
@@ -59,8 +63,9 @@ const DeleteTrip: React.FC<DeleteTripProps> = ({ trip }) => {
         title={tripToDelete?.title}
         handleDelete={() => setShouldDelete(true)}
         cancelElementToDelete={() => setTripToDelete(null)}
+        redirectTo={tripTitle ? '/' : undefined}
       />
-    </div>
+    </DeleteIconWrapper>
   )
 }
 

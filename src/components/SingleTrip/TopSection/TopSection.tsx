@@ -6,6 +6,7 @@ import TripTitle from './TripTitle'
 import TripDescription from './TripDescription'
 import TripStartDate from './TripStartDate'
 import { ImageContainer, StyledSection } from './TopSection.style'
+import DeleteTrip from '../../TripsPanel/DeleteTrip/DeleteTrip'
 
 export interface TopSectionProps {
   trip: ITrip
@@ -39,7 +40,9 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
           </label>
         </ImageContainer>
         <div className='detailsContainer'>
-          <h1 className='heading'>{intl.formatMessage({ id: 'your-trip' })}:</h1>
+          <h1 className='heading'>
+            {intl.formatMessage({ id: 'your-trip' })}: <DeleteTrip trip={trip} withText={false} />
+          </h1>
           <TripTitle trip={trip} />
           <TripDescription trip={trip} />
           <span className='startDate'>{intl.formatMessage({ id: 'start' })}:</span>

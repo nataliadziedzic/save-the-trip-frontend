@@ -49,9 +49,6 @@ export const Trip = styled.div`
   .boldText {
     font-weight: 500;
   }
-  .deleteIconButton {
-    cursor: pointer;
-  }
   .deleteIconWrapper {
     grid-row: 5;
   }

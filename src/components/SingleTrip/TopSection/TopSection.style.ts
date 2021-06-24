@@ -27,6 +27,9 @@ export const StyledSection = styled.section`
     font-size: 1em;
     margin-bottom: 16px;
     margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .title {
     font-size: 1.5em;
@@ -47,7 +50,10 @@ export const StyledSection = styled.section`
     vertical-align: middle;
     margin-left: 8px;
   }
-  .heading, .title, .description, .startDate {
+  .heading,
+  .title,
+  .description,
+  .startDate {
     color: #fff;
   }
   @media only screen and ${SIZES.tablet} {
