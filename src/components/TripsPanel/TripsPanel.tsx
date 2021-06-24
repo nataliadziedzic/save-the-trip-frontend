@@ -11,7 +11,7 @@ import DocumentsContextProvider from '../../context/documents.context'
 
 import AddTripDialog from './AddTripDialog/AddTripDialog'
 import AddDocsDialog from './AddDocsDialog/AddDocsDialog'
-import DeleteTrip from './DeleteTrip/DeleteTrip'
+import DeleteTrip from '../DeleteTrip/DeleteTrip'
 import { TripsContainer, Trip, StyledLink, MobileActionsWrapper } from './TripsPanel.style'
 import Media from 'react-media'
 import { SIZES } from '../../assets/styles/mediaQueries'

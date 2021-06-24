@@ -5,12 +5,12 @@ import { useIntl } from 'react-intl'
 import { useParams } from 'react-router-dom'
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline'
 
-import { ITrip } from '../../../types'
-import { useTripContext } from '../../../context/trip.context'
-import { deleteTrip } from '../../../api/trips.api'
-import { SIZES } from '../../../assets/styles/mediaQueries'
+import { ITrip } from '../../types'
+import { useTripContext } from '../../context/trip.context'
+import { deleteTrip } from '../../api/trips.api'
+import { SIZES } from '../../assets/styles/mediaQueries'
 
-import DeleteDialog from '../../common/DeleteDialog/DeleteDialog'
+import DeleteDialog from '../common/DeleteDialog/DeleteDialog'
 import { DeleteIconWrapper, StyledIconButton } from './DeleteTrip.style'
 
 export interface DeleteTripProps {

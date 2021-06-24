@@ -6,7 +6,7 @@ import TripTitle from './TripTitle'
 import TripDescription from './TripDescription'
 import TripStartDate from './TripStartDate'
 import { ImageContainer, StyledSection } from './TopSection.style'
-import DeleteTrip from '../../TripsPanel/DeleteTrip/DeleteTrip'
+import DeleteTrip from '../../DeleteTrip/DeleteTrip'
 
 export interface TopSectionProps {
   trip: ITrip
