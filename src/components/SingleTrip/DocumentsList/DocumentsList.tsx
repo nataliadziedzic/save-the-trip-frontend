@@ -4,9 +4,10 @@ import { useIntl } from 'react-intl'
 import _ from 'underscore'
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList'
 import { getDocuments } from '../../../api/documents.api'
-import { ITrip } from '../../../types'
+import { IDocuments, ITrip } from '../../../types'
 import { documentsTypes } from '../../../variables'
 import { DocumentsWrapper } from './DocumentsList.style'
+import AddDocsDialog from '../../common/AddDocsDialog/AddDocsDialog'
 
 export interface DocumentsListProps {
   trip: ITrip
@@ -14,8 +15,9 @@ export interface DocumentsListProps {
 
 const DocumentsList: React.FC<DocumentsListProps> = ({ trip }) => {
   const intl = useIntl()
-  const [allDocuments, setAllDocuments] = React.useState({})
+  const [allDocuments, setAllDocuments] = React.useState<IDocuments | null>(null)
   const [selectedDocuments, setSelectedDocuments] = React.useState<string[]>([])
+  const [openDialog, setOpenDialog] = React.useState(false)
 
   const translateDocument = (document: string) => {
     if (document === documentsTypes.PASSPORT) return intl.formatMessage({ id: 'passport' })
@@ -39,12 +41,13 @@ const DocumentsList: React.FC<DocumentsListProps> = ({ trip }) => {
 
   React.useEffect(() => {
     let docs: string[] = []
-    _.mapObject(allDocuments, (value, key) => {
-      if (key !== 'id' && key !== 'user_id' && key !== 'trip_id') {
-        const documentName = translateDocument(key)
-        value && docs.push(documentName)
-      }
-    })
+    allDocuments &&
+      _.mapObject(allDocuments, (value, key) => {
+        if (key !== 'id' && key !== 'user_id' && key !== 'trip_id') {
+          const documentName = translateDocument(key)
+          value && docs.push(documentName)
+        }
+      })
     setSelectedDocuments(docs)
   }, [allDocuments])
 
@@ -57,8 +60,18 @@ const DocumentsList: React.FC<DocumentsListProps> = ({ trip }) => {
         {selectedDocuments.map((document, index) => (
           <li key={index}>{document}</li>
         ))}
-        <div className='button outlinedButton'>{intl.formatMessage({ id: 'edit' })}</div>
+        <div className='button outlinedButton' onClick={() => setOpenDialog(true)}>
+          {intl.formatMessage({ id: 'edit' })}
+        </div>
       </ul>
+      <AddDocsDialog
+        open={openDialog}
+        setOpen={setOpenDialog}
+        userId={allDocuments?.user_id!}
+        tripId={trip?.id}
+        allDocuments={allDocuments}
+        setAllDocuments={setAllDocuments}
+      />
     </DocumentsWrapper>
   )
 }

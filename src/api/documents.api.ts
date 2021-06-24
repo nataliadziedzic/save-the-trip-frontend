@@ -14,13 +14,15 @@ export const addDocuments = async (
   id: number,
   documents: IDocuments,
   closeEditMode: () => void,
-  clearData: () => void
+  clearData: () => void,
+  returnResponse?: (documents: IDocuments) => void
 ) => {
   try {
-    await axiosInstance.put(`/documents/${id}`, documents)
+    const response = await axiosInstance.put(`/documents/${id}`, documents)
     dispatchSuccess('add-documents-success')
     closeEditMode()
     clearData()
+    returnResponse && returnResponse(response.data)
   } catch (error) {
     console.log(error.message)
     dispatchError()

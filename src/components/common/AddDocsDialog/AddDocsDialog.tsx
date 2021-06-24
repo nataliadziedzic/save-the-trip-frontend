@@ -4,15 +4,27 @@ import { DialogContentText, DialogTitle, DialogContent, DialogActions, Divider, 
 import { addDocuments } from '../../../api/documents.api'
 import { useDocumentsContext } from '../../../context/documents.context'
 import { DocumentsList, StyledDocsDialog } from './AddDocs.style'
-import DialogButton from '../../common/DialogButton/DialogButton'
+import DialogButton from '../DialogButton/DialogButton'
+import { IDocuments } from '../../../types'
 
 export interface AddDocsDialogProps {
   open: boolean
   setOpen: (arg: boolean) => void
   userId: number
+  // tripId and allDocuments and setAllDocuments should only be provided from a single trip view 'DocumentsList' file
+  tripId?: number | null
+  allDocuments?: IDocuments | null
+  setAllDocuments?: React.Dispatch<React.SetStateAction<IDocuments | null>>
 }
 
-const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) => {
+const AddDocsDialog: React.FC<AddDocsDialogProps> = ({
+  open,
+  setOpen,
+  userId,
+  tripId,
+  allDocuments,
+  setAllDocuments,
+}) => {
   const intl = useIntl()
   const documentsContext = useDocumentsContext()
 
@@ -53,7 +65,7 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
     setOpen(false)
   }
   const addTripDocuments = () => {
-    if (documentsContext.tripId) {
+    if (documentsContext?.tripId) {
       addDocuments(
         documentsContext.tripId,
         {
@@ -72,8 +84,42 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
         () => setOpen(false),
         () => availableDocs.map(document => document.changeFunction(false))
       )
+    } else if (tripId) {
+      // If tripId is provided in props then it means it is evoked from single trip view and need different handling
+      addDocuments(
+        tripId,
+        {
+          passport,
+          visa,
+          id_card: idCard,
+          eu_covid_certificate: euCovidCertificate,
+          covid_pcr_test: covidPCRtest,
+          covid_antigen_test: covidAntigenTest,
+          vaccination_certificate: vaccinationCertificate,
+          driving_licence: drivingLicence,
+          trip_id: tripId,
+          user_id: userId,
+          ehic,
+        },
+        () => setOpen(false),
+        () => availableDocs.map(document => document.changeFunction(false)),
+        setAllDocuments
+      )
     }
   }
+  React.useEffect(() => {
+    if (allDocuments) {
+      setPassport(allDocuments.passport)
+      setVisa(allDocuments.visa)
+      setIdCard(allDocuments.id_card)
+      setEuCovidCertificate(allDocuments.eu_covid_certificate)
+      setCovidPCRtest(allDocuments.covid_pcr_test)
+      setCovidAntigenTest(allDocuments.covid_antigen_test)
+      setVaccinationCertificate(allDocuments.vaccination_certificate)
+      setDrivingLicence(allDocuments.driving_licence)
+      setEhic(allDocuments.ehic)
+    }
+  }, [allDocuments])
 
   return (
     <StyledDocsDialog id='tripDialog' open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
@@ -96,9 +142,6 @@ const AddDocsDialog: React.FC<AddDocsDialogProps> = ({ open, setOpen, userId }) 
         </DocumentsList>
       </DialogContent>
       <DialogActions>
-        {/* <Button onClick={addTripDocuments} color='primary' className='save'>
-          {intl.formatMessage({ id: 'save' })}
-        </Button> */}
         <DialogButton textContent='save' onClick={addTripDocuments} primary />
       </DialogActions>
     </StyledDocsDialog>

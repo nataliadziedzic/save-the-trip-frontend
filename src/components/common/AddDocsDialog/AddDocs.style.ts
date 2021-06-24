@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { SIZES } from '../../../assets/styles/mediaQueries'
-import { StyledDialog } from '../AddTripDialog/AddTripDialog.style'
+import { Dialog } from '@material-ui/core'
 
 export const DocumentsList = styled.ul`
   display: grid;
@@ -24,9 +24,27 @@ export const DocumentsList = styled.ul`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `
-export const StyledDocsDialog = styled(StyledDialog)`
+export const StyledDocsDialog = styled(Dialog)`
   .MuiDialog-paperWidthSm {
     max-width: 750px;
+  }
+  .MuiInputBase-input {
+    color: #000 !important;
+  }
+  .MuiInput-underline::before {
+    border-bottom: 1px solid #000;
+  }
+  .MuiInput-underline:hover:not(.Mui-disabled)::before {
+    border-bottom: 1px solid #000;
+  }
+  .MuiInput-underline::after {
+    border-bottom: 2px solid #3f51b5;
+  }
+  .MuiSvgIcon-root {
+    fill: #3f51b5;
+  }
+  .MuiTypography-colorTextSecondary {
+    color: rgba(0, 0, 0, 0.61);
   }
   .MuiDivider-root {
     background-color: rgba(0, 0, 0, 0.64);
