@@ -9,7 +9,7 @@ const ErrorSnackbar: React.FC = () => {
   const intl = useIntl()
 
   const [error, setError] = React.useState(false)
-  const defaultMessage = 'something-wrong'
+  const defaultMessage = 'default-error'
   const [message, setMessage] = React.useState(defaultMessage)
 
   React.useEffect(() => {

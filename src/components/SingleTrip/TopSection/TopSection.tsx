@@ -1,12 +1,17 @@
 import * as React from 'react'
 import { useIntl } from 'react-intl'
-import palmTree from '../../../assets/images/palm-tree.jpg'
+
+import { updateTrip } from '../../../api/trips.api'
+import { postImage } from '../../../api/images.api'
+import { API_PATH } from '../../../variables'
 import { ITrip } from '../../../types'
+import palmTree from '../../../assets/images/palm-tree.jpg'
+
 import TripTitle from './TripTitle'
 import TripDescription from './TripDescription'
 import TripStartDate from './TripStartDate'
-import { ImageContainer, StyledSection } from './TopSection.style'
 import DeleteTrip from '../../DeleteTrip/DeleteTrip'
+import { ImageContainer, StyledSection } from './TopSection.style'
 
 export interface TopSectionProps {
   trip: ITrip
@@ -20,9 +25,18 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
   const uploadFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return
     else if (event.target.files[0]) {
-      //  postTripImage(event.target.files[0], setImageUrl)
+      const url: string = await postImage(event.target.files[0])
+      await updateTrip(trip.id!, { img: url })
+      setImageUrl(url)
     }
   }
+
+  React.useEffect(() => {
+    if (trip?.img) {
+      setImageUrl(trip.img)
+    }
+  }, [trip])
+
   return (
     <StyledSection>
       <div className='wrapper'>
@@ -35,7 +49,10 @@ const TopSection: React.FC<TopSectionProps> = ({ trip }) => {
             type='file'
           />
           <label htmlFor={`updateTripImg${trip?.id}`} className='uploadImageLabel'>
-            <img src={imageUrl || palmTree} alt={intl.formatMessage({ id: 'palm-tree-alt' })} />
+            <img
+              src={imageUrl ? `${API_PATH}${imageUrl}` : palmTree}
+              alt={intl.formatMessage({ id: 'palm-tree-alt' })}
+            />
             <div className='button outlinedButton'>{intl.formatMessage({ id: 'add-image' })}</div>
           </label>
         </ImageContainer>

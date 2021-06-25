@@ -3,6 +3,7 @@ import { dispatchError, dispatchSuccess } from '../commonFunctions/handleSnackba
 import { AuthedUser } from '../types'
 import { API_PATH } from '../variables'
 import { axiosInstance } from './axiosConfig'
+import { axiosForFiles } from './images.api'
 
 const handleErrors = (error: any) => {
   if (error.response) {
@@ -51,6 +52,7 @@ export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser)
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
     localStorage.setItem('refreshToken', JSON.stringify(response.data.refreshToken))
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
+    axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
     return setUser({ username, id, email })
   } catch (error) {
     console.log(error.message)
@@ -65,6 +67,7 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
     setUser({ username, id, email })
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
+    axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
   } catch (error) {
     console.log(error.message)
     dispatchError('session-expired')

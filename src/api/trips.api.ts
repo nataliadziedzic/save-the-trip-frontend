@@ -15,6 +15,7 @@ interface ITripToUpdate {
   title?: string
   description?: string
   start_date?: string
+  img?: string
 }
 
 export const updateTrip = async (id: number, body: ITripToUpdate) => {
