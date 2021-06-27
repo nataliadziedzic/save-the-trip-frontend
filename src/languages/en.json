@@ -58,5 +58,6 @@
   "delete-error": "Item could not be deleted. Try again later.",
   "delete-confirmation": "Are you sure you want to delete",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "password-requirements": "The password must contain at least 8 characters, one uppercase letter and one number."
 }

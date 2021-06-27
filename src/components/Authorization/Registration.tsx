@@ -116,6 +116,7 @@ const Registration: React.FC<RegistrationProps> = ({ changeView }) => {
           autoComplete='current-password'
           value={password}
           onChange={event => setPassword(event.target.value)}
+          helperText={intl.formatMessage({ id: 'password-requirements' })}
         />
         <TextField
           variant='outlined'

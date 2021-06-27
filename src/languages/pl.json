@@ -58,5 +58,6 @@
   "delete-error": "Nie udało się usunąć elementu. Spróbuj ponownie później.",
   "delete-confirmation": "Czy na pewno chcesz usunąć",
   "yes": "Tak",
-  "no": "Nie"
+  "no": "Nie",
+  "password-requirements": "Hasło musi zawierać min 8 znaków, jedną wielką literę i jedną cyfrę."
 }
