@@ -8,6 +8,7 @@ export const getTrips = async (userId: number, setTrips: (trips: ITrip[]) => voi
     setTrips(response.data)
   } catch (error) {
     console.log(error.message)
+    dispatchError('default-error')
   }
 }
 

@@ -26,3 +26,20 @@ export interface IDocuments {
   user_id: number
   ehic: boolean
 }
+export interface IShoppingItem {
+  id?: number | null
+  title: string | null
+  amount: number | null
+  unit: string | null
+  status?: string | null
+  trip_id: number | null
+  user_id: number | null
+}
+export enum ShoppingItemStatus {
+  TO_BUY = 'TO_BUY',
+  BOUGHT = 'BOUGHT',
+}
+export enum ShoppingItemUnit {
+  KG = 'KG',
+  PIECE = 'PIECE',
+}

@@ -59,5 +59,11 @@
   "delete-confirmation": "Are you sure you want to delete",
   "yes": "Yes",
   "no": "No",
-  "password-requirements": "The password must contain at least 8 characters, one uppercase letter and one number."
+  "password-requirements": "The password must contain at least 8 characters, one uppercase letter and one number.",
+  "add": "Add",
+  "add-shopping-item-intro": "Create a shopping list for your trip to easily control all the things you need to buy.",
+  "amount": "Amount",
+  "unit": "Unit",
+  "piece": "Piece",
+  "create-item-success": "Item created successfully."
 }
