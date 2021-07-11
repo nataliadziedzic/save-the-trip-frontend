@@ -46,6 +46,14 @@ const App = () => {
     }
   }, [user, dispatch])
 
+  React.useEffect(() => {
+    if (authed && user.preferredLanguage) {
+      user.preferredLanguage === 'pl'
+        ? dispatch(changeLanguage(polishMessages))
+        : dispatch(changeLanguage(englishMessages))
+    }
+  }, [authed, user.preferredLanguage, dispatch])
+
   return (
     <IntlProvider locale={navigator.language || 'en'} messages={language}>
       <StylesProvider injectFirst>

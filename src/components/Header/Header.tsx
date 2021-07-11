@@ -10,6 +10,7 @@ import Avatar from '../Avatar/Avatar'
 import Logout from './Logout/Logout'
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu'
 import { StyledHeader, User } from './Header.style'
+import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher'
 
 export interface HeaderProps {}
 
@@ -31,7 +32,10 @@ const Header: React.FC<HeaderProps> = () => {
                 <span className='username'>{user.username}</span>
                 <Avatar user={user} />
               </User>
-              <Logout />
+              <div className='actionsWrapper'>
+                <LanguageSwitcher />
+                <Logout />
+              </div>
             </>
           ) : (
             <HamburgerMenu />

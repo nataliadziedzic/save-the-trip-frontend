@@ -30,4 +30,7 @@ export const StyledMenu = styled(Menu)`
       border: none;
     }
   }
+  .switcherWrapper {
+    margin: 0 auto;
+  }
 `

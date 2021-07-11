@@ -10,6 +10,14 @@ export const StyledHeader = styled.header`
   .logo {
     width: 120px;
   }
+  .actionsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .switcherWrapper {
+    margin-right: 40px;
+  }
 `
 export const User = styled.div`
   display: flex;

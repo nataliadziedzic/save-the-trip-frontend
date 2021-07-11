@@ -48,12 +48,12 @@ interface UserToAuth {
 export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser) => void) => {
   try {
     const response = await axiosAuthInstance.post('/login', userToAuth)
-    const { username, id, email } = response.data.user
+    const { username, id, email, preferredLanguage } = response.data.user
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
     localStorage.setItem('refreshToken', JSON.stringify(response.data.refreshToken))
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
     axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
-    return setUser({ username, id, email })
+    return setUser({ username, id, email, preferredLanguage })
   } catch (error) {
     console.log(error.message)
     handleErrors(error)
@@ -63,9 +63,9 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
   const refreshToken = localStorage.getItem('refreshToken') ? JSON.parse(localStorage.getItem('refreshToken')!) : null
   try {
     const response = await axiosAuthInstance.post('/refresh', { refreshToken })
-    const { username, id, email } = response.data
+    const { username, id, email, preferredLanguage } = response.data
     localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
-    setUser({ username, id, email })
+    setUser({ username, id, email, preferredLanguage })
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
     axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
   } catch (error) {

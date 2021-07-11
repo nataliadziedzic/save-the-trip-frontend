@@ -2,6 +2,7 @@ export interface AuthedUser {
   username: string | null
   email: string | null
   id: number | null
+  preferredLanguage?: null | string
 }
 
 export interface ITrip {
