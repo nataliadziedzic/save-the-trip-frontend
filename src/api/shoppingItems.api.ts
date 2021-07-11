@@ -41,6 +41,14 @@ export const updateShoppingItem = async (body: IShoppingItem, setItem: () => voi
     dispatchError('default-error')
   }
 }
+export const updateItemStatus = async (id: number, status: { status: 'TO_BUY' } | { status: 'BOUGHT' }) => {
+  try {
+    await axiosInstance.patch(`/shopping-item/${id}`, status)
+  } catch (error) {
+    console.log(error.message)
+    dispatchError('default-error')
+  }
+}
 
 export const deleteShoppingItem = async (id: number, updateState: () => void) => {
   try {

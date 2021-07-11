@@ -19,6 +19,7 @@ import { addShoppingItem } from '../../../../api/shoppingItems.api'
 
 import DialogButton from '../../../common/DialogButton/DialogButton'
 import { StyledDialog } from './ShoppingListDialog.style'
+import { dispatchWarning } from '../../../../commonFunctions/handleSnackbars'
 
 export interface ShoppingListDialogProps {
   open: boolean
@@ -32,7 +33,7 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
   const user = useAppSelector(state => state.user)
 
   const [title, setTitle] = React.useState('')
-  const [amount, setAmount] = React.useState(1)
+  const [quantity, setQuantity] = React.useState(1)
   const [unit, setUnit] = React.useState('')
 
   const handleClose = () => {
@@ -41,17 +42,23 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
   const handleAddShoppingItem = () => {
     const newItem = {
       title,
-      amount,
+      quantity,
       unit,
       trip_id: tripId,
       user_id: user.id,
     }
-    const clearInputs = () => {
-      setTitle('')
-      setAmount(1)
-      setUnit('')
-    }
-    addShoppingItem(newItem, setItems, () => setOpen(false), clearInputs)
+    if (title.length && unit.length) {
+      if (quantity < 1) {
+        dispatchWarning('quantity-error')
+      } else {
+        const clearInputs = () => {
+          setTitle('')
+          setQuantity(1)
+          setUnit('')
+        }
+        addShoppingItem(newItem, setItems, () => setOpen(false), clearInputs)
+      }
+    } else dispatchWarning('empty-fields')
   }
   return (
     <StyledDialog id='tripDialog' open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
@@ -78,13 +85,13 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
             fullWidth
           />
           <FormControl className='quantityInput'>
-            <InputLabel htmlFor='product-amount'>{intl.formatMessage({ id: 'amount' })}</InputLabel>
+            <InputLabel htmlFor='product-quantity'>{intl.formatMessage({ id: 'quantity' })}</InputLabel>
             <Input
               type='number'
               required
-              id='product-amount'
-              value={amount}
-              onChange={event => setAmount(+event.target.value)}
+              id='product-quantity'
+              value={quantity}
+              onChange={event => setQuantity(+event.target.value)}
             />
           </FormControl>
           <FormControl className='quantityInput'>

@@ -16,6 +16,7 @@ import {
 import { useAppSelector } from '../../../../redux/hooks'
 import { IShoppingItem } from '../../../../types'
 import { updateShoppingItem } from '../../../../api/shoppingItems.api'
+import { dispatchWarning } from '../../../../commonFunctions/handleSnackbars'
 
 import DialogButton from '../../../common/DialogButton/DialogButton'
 import { StyledDialog } from '../ShoppingListDialog/ShoppingListDialog.style'
@@ -32,13 +33,13 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
   const user = useAppSelector(state => state.user)
 
   const [title, setTitle] = React.useState('')
-  const [amount, setAmount] = React.useState(1)
+  const [quantity, setQuantity] = React.useState(1)
   const [unit, setUnit] = React.useState('')
 
   React.useEffect(() => {
     if (item) {
       setTitle(item.title!)
-      setAmount(item.amount!)
+      setQuantity(item.quantity!)
       setUnit(item.unit!)
     }
   }, [item])
@@ -50,17 +51,23 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
     const updatedItem = {
       id: item.id,
       title,
-      amount,
+      quantity: quantity,
       unit,
       status: item.status,
       trip_id: item.trip_id,
       user_id: user.id,
     }
-    updateShoppingItem(
-      updatedItem,
-      () => setItem(updatedItem),
-      () => setOpen(false)
-    )
+    if (title.length && unit.length) {
+      if (quantity <= 0) {
+        dispatchWarning('quantity-error')
+      } else {
+        updateShoppingItem(
+          updatedItem,
+          () => setItem(updatedItem),
+          () => setOpen(false)
+        )
+      }
+    } else dispatchWarning('empty-fields')
   }
   return (
     <StyledDialog id='tripDialog' open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
@@ -87,13 +94,13 @@ const ShoppingListDialog: React.FC<ShoppingListDialogProps> = ({ open, setOpen, 
             fullWidth
           />
           <FormControl className='quantityInput'>
-            <InputLabel htmlFor='product-amount'>{intl.formatMessage({ id: 'amount' })}</InputLabel>
+            <InputLabel htmlFor='product-quantity'>{intl.formatMessage({ id: 'quantity' })}</InputLabel>
             <Input
               type='number'
               required
-              id='product-amount'
-              value={amount}
-              onChange={event => setAmount(+event.target.value)}
+              id='product-quantity'
+              value={quantity}
+              onChange={event => setQuantity(+event.target.value)}
             />
           </FormControl>
           <FormControl className='quantityInput'>

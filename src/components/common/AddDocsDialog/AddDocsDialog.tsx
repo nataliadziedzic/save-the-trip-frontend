@@ -11,7 +11,7 @@ export interface AddDocsDialogProps {
   open: boolean
   setOpen: (arg: boolean) => void
   userId: number
-  // tripId and allDocuments and setAllDocuments should only be provided from a single trip view 'DocumentsList' file
+  // tripId, allDocuments and setAllDocuments should only be provided from a single trip view 'DocumentsList' file
   tripId?: number | null
   allDocuments?: IDocuments | null
   setAllDocuments?: React.Dispatch<React.SetStateAction<IDocuments | null>>

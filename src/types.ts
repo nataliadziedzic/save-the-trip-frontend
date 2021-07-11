@@ -29,7 +29,7 @@ export interface IDocuments {
 export interface IShoppingItem {
   id?: number | null
   title: string | null
-  amount: number | null
+  quantity: number | null
   unit: string | null
   status?: string | null
   trip_id: number | null

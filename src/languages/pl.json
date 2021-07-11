@@ -62,8 +62,9 @@
   "password-requirements": "Hasło musi zawierać min 8 znaków, jedną wielką literę i jedną cyfrę.",
   "add": "Dodaj",
   "add-shopping-item-intro": "Utwórz listę zakupów na swoją podróż, aby w łatwy sposób kontrolować wszystkie rzeczy, które musisz kupić.",
-  "amount": "Ilość",
+  "quantity": "Ilość",
   "unit": "Jednostka",
   "piece": "Sztuka",
-  "create-item-success": "Dodano produkt."
+  "create-item-success": "Dodano produkt.",
+  "quantity-error": "Ilość nie może być mniejsza niż 1"
 }

@@ -49,8 +49,12 @@ export const GlobalStyle = createGlobalStyle`
     text-transform: uppercase;
     margin: 16px auto 0;
     transition: 0.3s;
+    background-color: #74164b;
+    @media only screen and ${SIZES.laptop} {
+      background-color: transparent;
       &:hover {
         background-color: #74164b;
+      }
     }
   }
   .MuiAlert-message, .MuiAlert-icon path, .MuiAlert-action path, .MuiButton-label {

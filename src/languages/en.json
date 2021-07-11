@@ -62,8 +62,9 @@
   "password-requirements": "The password must contain at least 8 characters, one uppercase letter and one number.",
   "add": "Add",
   "add-shopping-item-intro": "Create a shopping list for your trip to easily control all the things you need to buy.",
-  "amount": "Amount",
+  "quantity": "Quantity",
   "unit": "Unit",
   "piece": "Piece",
-  "create-item-success": "Item created successfully."
+  "create-item-success": "Item created successfully.",
+  "quantity-error": "The quantity must not be less than 1."
 }

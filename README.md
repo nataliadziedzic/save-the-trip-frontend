@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Save The Trip - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live demo: [Save The Trip](https://save-the-trip-frontend.herokuapp.com/)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+> Frontend for application where you can plan your trips. It allows you to add a new trip by entering its title, description and date of departure. In the next steps, you can select documents that you will need during your jurney, create a shopping list for items that you would like to purchase before leaving or add a photo that will distinguish this trip from the others. You can edit or delete all of this later as needed.
 
-### `npm start`
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can create a new account or log in to a sample account by providing: <br/>
+email: sample@account.com <br/>
+password: Password123
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Motivation
 
-### `npm test`
+As I was planning the trip myself, I noticed that I have to remember about many things, especially in the era of a pandemic. There were a lot of documents that I needed to set off and instead of writing on paper or looking for an application that would allow me to keep everything in one place, I decided to use this opportunity to write my own app. Thanks to this, I was able to broaden my knowledge about the basic issues of backend technologies, try Redux Toolkit and get used to Typescript a bit more.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
 
-### `npm run build`
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) - A strict syntactical superset of JavaScript and adds optional static typing to the language.
+- [React-Router](https://github.com/ReactTraining/react-router) - Declarative routing for React.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+- [Redux Toolkit](https://redux-toolkit.js.org/) - The official, opinionated, batteries-included toolset for efficient Redux development.
+- [styled-components](https://www.styled-components.com/) - CSS-in-JS approach for styling React components.
+- [Material-UI](https://www.styled-components.com/) - React components for faster and easier web development.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License
