@@ -44,6 +44,9 @@ const TripsPanel: React.FC = () => {
         <h1 className='heading'>
           {intl.formatMessage({ id: 'heading-my-trips' })} <WorkIcon />
         </h1>
+        <div className='button outlinedButton' onClick={() => setOpenTripDialog(true)}>
+          {intl.formatMessage({ id: 'add-trip' })}
+        </div>
         {tripContext.trips.map((trip, index) => (
           <Trip key={trip.id}>
             <Media query={SIZES.tablet}>{matches => matches && <DeleteTrip trip={trip} withText={false} />}</Media>
@@ -78,9 +81,7 @@ const TripsPanel: React.FC = () => {
             </Media>
           </Trip>
         ))}
-        <div className='button outlinedButton' onClick={() => setOpenTripDialog(true)}>
-          {intl.formatMessage({ id: 'add-trip' })}
-        </div>
+
         <AddTripDialog
           open={openTripDialog}
           setOpen={setOpenTripDialog}

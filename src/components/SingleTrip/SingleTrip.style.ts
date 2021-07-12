@@ -42,7 +42,6 @@ export const TripContainer = styled.div`
     .listTitle {
        &:after {
         width: 70%;
-        height: 1px
        }
     }
   }

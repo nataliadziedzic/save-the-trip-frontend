@@ -12,7 +12,7 @@ export const TripsContainer = styled.section`
   justify-content: center;
   .heading {
     text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     .MuiSvgIcon-root {
       margin-left: 8px;
       vertical-align: sub;
@@ -22,7 +22,7 @@ export const TripsContainer = styled.section`
     width: auto;
     padding: 8px 24px;
     background-color: #1f4e81;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
   * {
     color: #fff;
