@@ -60,4 +60,7 @@ export const GlobalStyle = createGlobalStyle`
   .MuiAlert-message, .MuiAlert-icon path, .MuiAlert-action path, .MuiButton-label {
     color: #fff;
   }
+  .MuiCircularProgress-colorPrimary {
+    color: #db1bab;
+}
 `

@@ -22,10 +22,12 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import TripsPanel from '../TripsPanel/TripsPanel'
 import Header from '../Header/Header'
 import SingleTrip from '../SingleTrip/SingleTrip'
+import Loader from '../Loader/Loader'
 
 const App = () => {
   const { language } = useAppSelector(state => state.language)
   const { authed } = useAppSelector(state => state.authed)
+  const [isUserFetchingDone, setIsUserFetchingDone] = React.useState(false)
   const user = useAppSelector(state => state.user)
   const dispatch = useAppDispatch()
 
@@ -35,7 +37,7 @@ const App = () => {
     } else {
       dispatch(changeLanguage(englishMessages))
     }
-    setNewToken((response: AuthedUser) => dispatch(setUser(response)))
+    setNewToken((response: AuthedUser) => dispatch(setUser(response)), setIsUserFetchingDone)
   }, [dispatch])
 
   React.useEffect(() => {
@@ -60,17 +62,22 @@ const App = () => {
         <GlobalStyle />
         <div className='App'>
           <Router>
-            {authed && <Header />}
-            <Switch>
-              <Route exact path='/auth'>
-                {authed ? <Redirect to='/' /> : <Authorization />}
-              </Route>
-              <TripsContextProvider>
-                <PrivateRoute authed={authed} path='/' component={TripsPanel} />
-                <PrivateRoute authed={authed} path='/trip/:tripTitle/:id' component={SingleTrip} />
-              </TripsContextProvider>
-            </Switch>
+            {isUserFetchingDone && (
+              <>
+                {authed && <Header />}
+                <Switch>
+                  <Route exact path='/auth'>
+                    {authed ? <Redirect to='/' /> : <Authorization />}
+                  </Route>
+                  <TripsContextProvider>
+                    <PrivateRoute authed={authed} path='/' component={TripsPanel} />
+                    <PrivateRoute authed={authed} path='/trip/:tripTitle/:id' component={SingleTrip} />
+                  </TripsContextProvider>
+                </Switch>
+              </>
+            )}
           </Router>
+          <Loader />
           <ErrorSnackbar />
           <WarningSnackbar />
           <SuccessSnackbar />

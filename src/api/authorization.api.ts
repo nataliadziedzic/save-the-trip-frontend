@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { hideLoader, showLoader } from '../commonFunctions/handleLoader'
 import { dispatchError, dispatchSuccess } from '../commonFunctions/handleSnackbars'
 import { AuthedUser } from '../types'
 import { API_PATH } from '../variables'
@@ -21,6 +22,21 @@ const axiosAuthInstance = axios.create({
   baseURL: API_PATH,
   headers: { 'Content-Type': 'application/json' },
 })
+
+axiosAuthInstance.interceptors.request.use(function (config) {
+  showLoader()
+  return config
+})
+axiosAuthInstance.interceptors.response.use(
+  function (response) {
+    hideLoader()
+    return response
+  },
+  function (error) {
+    hideLoader()
+    return Promise.reject(error)
+  }
+)
 
 export const signUp = async (
   user: {
@@ -59,7 +75,7 @@ export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser)
     handleErrors(error)
   }
 }
-export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
+export const setNewToken = async (setUser: (user: AuthedUser) => void, loaded: (isLoaded: boolean) => void) => {
   const refreshToken = localStorage.getItem('refreshToken') ? JSON.parse(localStorage.getItem('refreshToken')!) : null
   try {
     const response = await axiosAuthInstance.post('/refresh', { refreshToken })
@@ -68,6 +84,7 @@ export const setNewToken = async (setUser: (user: AuthedUser) => void) => {
     setUser({ username, id, email, preferredLanguage })
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
     axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
+    loaded(true)
   } catch (error) {
     console.log(error.message)
     dispatchError('session-expired')
