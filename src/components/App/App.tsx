@@ -39,7 +39,7 @@ const App = () => {
   }, [dispatch])
 
   React.useEffect(() => {
-    if (Object.values(user).some(value => value === null)) {
+    if (!user.email || !user.id || !user.username) {
       dispatch(setAuthed(false))
     } else {
       dispatch(setAuthed(true))
