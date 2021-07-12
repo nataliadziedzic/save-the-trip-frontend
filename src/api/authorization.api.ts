@@ -78,16 +78,21 @@ export const signIn = async (userToAuth: UserToAuth, setUser: (user: AuthedUser)
 export const setNewToken = async (setUser: (user: AuthedUser) => void, loaded: (isLoaded: boolean) => void) => {
   const refreshToken = localStorage.getItem('refreshToken') ? JSON.parse(localStorage.getItem('refreshToken')!) : null
   try {
-    const response = await axiosAuthInstance.post('/refresh', { refreshToken })
-    const { username, id, email, preferredLanguage } = response.data
-    localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
-    setUser({ username, id, email, preferredLanguage })
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
-    axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
-    loaded(true)
+    if (refreshToken) {
+      const response = await axiosAuthInstance.post('/refresh', { refreshToken })
+      const { username, id, email, preferredLanguage } = response.data
+      localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
+      setUser({ username, id, email, preferredLanguage })
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
+      axiosForFiles.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`
+      loaded(true)
+    } else {
+      loaded(true)
+    }
   } catch (error) {
     console.log(error.message)
     dispatchError('session-expired')
+    loaded(true)
   }
 }
 
