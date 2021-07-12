@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTrips } from '../api/trips.api'
+import { getSingleTrip, getTrips } from '../api/trips.api'
 import { ITrip } from '../types'
 
 interface TripsContextValue {
@@ -10,7 +10,7 @@ interface TripsContextValue {
 }
 interface FindTripContextValue {
   trip: ITrip | null
-  findTrip: (id: number) => void
+  findTrip: (userId: number, id: number) => void
 }
 
 export const TripsContext = React.createContext<TripsContextValue>(null!)
@@ -37,10 +37,12 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({ children })
       getTrips(userId, setTrips)
     }
   }
-  const findTrip = (id: number) => {
+  const findTrip = (userId: number, id: number) => {
     if (trips.length > 0) {
       const singleTrip = trips.find(trip => trip.id === id)
       setTrip(singleTrip!)
+    } else {
+      getSingleTrip(userId, id, setTrip)
     }
   }
   const updateTrips = (trip: ITrip) => {

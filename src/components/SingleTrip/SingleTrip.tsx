@@ -6,15 +6,18 @@ import TopSection from './TopSection/TopSection'
 import ShoppingList from './ShoppingList/ShoppingList'
 import DocumentsList from './DocumentsList/DocumentsList'
 import { TripContainer } from './SingleTrip.style'
+import { useAppSelector } from '../../redux/hooks'
+import { dispatchError } from '../../commonFunctions/handleSnackbars'
 
 const SingleTrip: React.FC = () => {
   const { id } = useParams<{ id: string }>()
+  const user = useAppSelector(state => state.user)
   const findTripContext = useFindTripContext()
 
   React.useEffect(() => {
-    if (id) {
-      findTripContext.findTrip(+id!)
-    }
+    if (id && user.id) {
+      findTripContext.findTrip(user.id, +id!)
+    } else dispatchError()
   }, [id])
 
   return (

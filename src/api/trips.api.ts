@@ -12,6 +12,16 @@ export const getTrips = async (userId: number, setTrips: (trips: ITrip[]) => voi
   }
 }
 
+export const getSingleTrip = async (userId: number, tripId: number, setTrip: (trip: ITrip) => void) => {
+  try {
+    const response = await axiosInstance.get(`user/${userId}/trip/${tripId}`)
+    setTrip(response.data)
+  } catch (error) {
+    console.log(error.message)
+    dispatchError('default-error')
+  }
+}
+
 interface ITripToUpdate {
   title?: string
   description?: string
