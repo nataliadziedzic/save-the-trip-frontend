@@ -21,7 +21,6 @@ export const TripsContainer = styled.section`
   .button {
     width: auto;
     padding: 8px 24px;
-    background-color: #1f4e81;
     margin-bottom: 40px;
   }
   * {
